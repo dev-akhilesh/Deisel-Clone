@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        .main-body {
+            display: flex;
+            min-height: 750px;
+            /* margin: auto; */
+            justify-content: center;
+
+        }
+
+        .left-image {
+            width: 67%;
+            border: 1px solid black;
+        }
+
+        .right-text {
+            width: 28%;
+            border: 1px solid black;
+        }
+
+        :root {
+            --fontFamily: "Scto_Grotesk_Regular";
+        }
+
+        :root {
+            --blue: #007bff;
+            --indigo: #6610f2;
+            --purple: #6f42c1;
+            --pink: #e83e8c;
+            --red: #dc3545;
+            --orange: #fd7e14;
+            --yellow: #ffc107;
+            --green: #28a745;
+            --teal: #20c997;
+            --cyan: #17a2b8;
+            --white: #fff;
+            --gray: #6c757d;
+            --gray-dark: #343a40;
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --breakpoint-xs: 0;
+            --breakpoint-sm: 576px;
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 992px;
+            --breakpoint-xl: 1200px;
+            --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav></nav>
+    </header>
+    <div class="main-body">
+        <div class="left-image" id="left-image"></div>
+        <div class="right-text" id="right-text"></div>
+    </div>
+
+    <div class="youMayLike">
+        <h2>You may also like</h2>
+    </div>
+    <div class="moreImage">
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹12,999.00</h3>
+                <p>BLUE</p>
+                <p>D-MIHTRY Straight Men Blue Jeans</p>
+
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹11,999.00</h3>
+                <p>BLACK</p>
+                <p>T-MILES Regular Fit Men Black Polo</p>
+
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹44,999.00</h3>
+                <p>BLACk</p>
+                <p>AMWT-KOOPU-HT26 Regular Man Black </p>
+
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹21,999.00</h3>
+                <p>BLACK</p>
+                <p>AMWB-BYOOM-HT21 Regular Man Black</p>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="upperFooter">
+        <div class="left-footer">
+            <h5>Sign up to never miss an update.</h5>
+            <div>
+
+                <div>
+                    <input type="text" placeholder="Enter Your Email address*">
+                </div>
+            </div>
+            <div class="gender">
+                <div class="male">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Men</label>
+                </div>
+                <div class="female">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Woman</label>
+                </div>
+
+            </div>
+            <div class="email">
+                <p></p>
+            </div>
+            <div class="text">
+                <p>By clicking Sign up you have read and agreed to our <a href="">privacy policy</a></p>
+            </div>
+            <div class="button"></div>
+            <button>Sign Up</button>
+        </div>
+        <div class="right-footer">
+            <div>
+                <h4>Connect with us on social media</h4>
+                <div>
+                    <a href=""><img src="" alt=""></a>
+                </div>
+                <div>
+                    <a href=""><img src="" alt=""></a>
+                </div>
+                <div>
+                    <a href=""><img src="" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    let rightAppend = document.getElementById("right-text")
+
+    function display(data) {
+        rightAppend.innerHTML = ""
+        data.forEach((element, index) => {
+            let div = document.createElement("div")
+
+            let heading = document.createElement("h2")
+            h2.setAttribute("id", "heading")
+            h2.innerText = element.head
+
+            let price = document.createElement("h4")
+            price.setAttribute("id", "price")
+            price.innerText = `MRP ₹${element.price}`
+
+            let p = document.createElement("p")
+            p.innerText = "Price inclusive of all taxes"
+
+            let color = document.createElement("h3")
+            color.innerText = `COLOR :${element.color}`
+
+            let image = document.createElement("img")
+            image.setAttribute("id", "image")
+            image.sr = element.image[0];
+
+            let Ch = document.createElement("h4")
+            ch.innerText = `CHOOSE SIZE ${element.size}`
+
+
+            let btn = document.createElement("div")
+            btn.setAttribute("id", "size-btn")
+            element.button.forEach((el, i) => {
+                let button = document.createElement("button")
+                button.innerText = element.button.el
+                btn.append(button)
+
+            })
+            let pinCode = document.createElement("input")
+            pinCode.setAttribute("id", "pinCode")
+
+            let checkDeliver = document.createElement("button")
+            checkDeliver.innerText = "Check Delivery"
+            let expectedDelivery = document.createElement("p")
+
+            checkDeliver.addEventListener("click", function () {
+                expectedDelivery.innerText = "Expected delivery on Fri,3 Mar- Sun,4 Mar"
+            })
+            let addToCart = document.createElement("button")
+            addToCart.setAttribute("id", "cart")
+            addToCart.innerText("ADD TO CART")
+
+
+        });
+    }
+</script>
+
+</html>
