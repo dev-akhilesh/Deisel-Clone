@@ -4,10 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
     <title></title>
 </head>
 <body>
-    
+    <header>
+        <nav></nav>
+    </header>
+
+    <section id="sieve">
+        <div id="filters">
+            <details class="color-filter">
+                <summary>Filter by Color</summary>
+            </details>
+
+            <details class="chothing-size-filter">
+                <summary>Filter by Clothing Size</summary>
+            </details>
+
+            <details class="shoe-size-filter">
+                <summary>Filter by Shoe Size</summary>
+            </details>
+
+            <details class="gender-filter">
+                <summary>Filter by Gender</summary>
+            </details>
+
+            <details class="pattern-filter">
+                <summary>Filter by Pattern</summary>
+            </details>
+
+            <details class="discount-filter">
+                <summary>Filter by Discount</summary>
+            </details>
+        </div>
+
+        <div id="sort">
+            <details>
+                <summary>Sort By</summary>
+                
+                <div class="sort-option">
+                    <input type="radio" name="sort-option" id="new-arrival">
+                    <label for="new-arrival">New Arrival</label>
+                </div>
+
+                <div class="sort-option">
+                    <input type="radio" name="sort-option" id="price-ascending">
+                    <label for="price-ascending">Price: Low to High</label>
+                </div>
+
+                <div class="sort-option">
+                    <input type="radio" name="sort-option" id="price-descending">
+                    <label for="price-descending">Price: High to Low</label>
+                </div>
+
+                <div class="sort-option">
+                    <input type="radio" name="sort-option" id="discount-descending">
+                    <label for="discount-descending">Discount: High to Low</label>
+                </div>
+            </details>
+        </div>
+    </section>
 </body>
 <script src="./scripts/product_list.js" type="module"></script>
 </html>
