@@ -1,10 +1,4 @@
-import { getProducts, getProduct } from "../external/scripts/products_api.js";
-
-const productsURL = "../database/products_database.json";
-
-
-
-
+import { _fetch } from "../external/scripts/api.js";
 
 
 
@@ -175,21 +169,28 @@ function filterByURL(products) {
 window.addEventListener("load", async () => {
     try {
         /*************** Filer all products based on url parameters first ***************/
-        let products = await getProducts(productsURL);
-        products = filterByURL(products);
 
-        displayFilters(products);
+        // let products = await getProducts(productsURL);
+        // products = filterByURL(products);
 
+        // products.forEach(product => {
+        //     console.log(product.size);
+        // })
 
-
-        document.querySelector("#filters").addEventListener("change", (event) => {
-            if (!event.target.classList.contains("filter-checkbox")) return;
-
-            displayProducts(products)
-        })
+        // displayFilters(products);
 
 
 
+        // document.querySelector("#filters").addEventListener("change", (event) => {
+        //     if (!event.target.classList.contains("filter-checkbox")) return;
+
+        //     displayProducts(products)
+        // })
+
+
+        let response = await _fetch("http://localhost:3000/products");
+        response = await response.json();
+        console.log(response);
 
 
 
