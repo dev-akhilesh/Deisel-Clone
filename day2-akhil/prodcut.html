@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        .main-body {
+            display: flex;
+            min-height: 750px;
+            /* margin: auto; */
+            justify-content: center;
+
+        }
+
+        .left-image {
+            width: 67%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border: 1px solid black;
+            row-gap: 20px;
+        }
+
+        .left-image .left-side-images {
+            width: 90%;
+            /* border: 1px solid rebeccapurple; */
+        }
+
+        .left-image .left-side-images img {
+            width: 100%;
+        }
+
+        .right-text {
+            width: 28%;
+            /* display: flex; */
+            border: 1px solid black;
+        }
+
+        .right-text div .heading {
+            font-size: 1.5rem;
+            margin: 0;
+            line-height: 2.125rem;
+            letter-spacing: .05rem;
+            font-weight: 700;
+            color: #000;
+            /* border-left: 2px solid black; */
+            text-transform: uppercase;
+        }
+
+        .right-text div .color {
+            margin-bottom: 3px;
+        }
+
+        .right-text div #price {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .right-text div .p {
+            margin-bottom: 3px;
+            /* border: 1px solid rebeccapurple; */
+        }
+
+        .right-text div .imageDiv {
+            width: 20%;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            border-bottom: 3px solid black;
+        }
+
+        .right-text div .imageDiv img {
+            width: 100%;
+
+        }
+
+        .right-text div .btn .button {
+            /* display: block; */
+            height: 35px;
+            border: 1px solid rgb(109, 107, 107);
+            background-color: white;
+            color: black;
+        }
+
+        .right-text div .btn .button:hover {
+            /* display: block; */
+            /* height: 30px; */
+            border: 3px solid rgb(5, 5, 5);
+
+            color: black;
+        }
+
+        .right-text div .btn {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 3px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .right-text div .pinCode {
+            height: 30px;
+            width: 45%;
+            margin-bottom: 10px;
+        }
+
+        .right-text div .check {
+            height: 32px;
+            border: 1px solid black;
+            color: white;
+            background-color: black;
+            width: 40%;
+            margin-bottom: 10px;
+        }
+
+        .right-text div .cart {
+            height: 35px;
+            width: 80%;
+            display: block;
+            /* margin: auto; */
+            background-color: black;
+            color: white;
+
+        }
+
+        .upperFooter {
+            display: flex;
+        }
+
+        .left-footer {
+            display: flex;
+            width: 50%;
+            background-color: black;
+        }
+
+        .right-footer a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .left-footer h5 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            padding-bottom: 14px;
+            /* text-align: center; */
+        }
+        .left-footer>div{
+            width: 70%;
+            margin: auto;
+        }
+        .left-footer>div>div {
+            width: 60%;
+            margin: auto;
+            /* border: 1px solid white; */
+        }
+
+        .left-footer>div>div {
+            width: 89%;
+            margin: auto;
+        }
+
+        .left-footer>div>div>div>input {
+            width: 89%;
+            display: block;
+            height: 25px;
+        }
+
+        .gender {
+            display: flex;
+            align-items: center;
+            /* justify-content: space-around; */
+        }
+
+        .gender>.male>input,
+        .gender>.female>input {
+            /* height: 20px; */
+
+            border: 0px;
+            width: 20px;
+            margin-right: 5px;
+            height: 2em;
+            /* border: 1px solid white; */
+
+            color: white;
+        }
+
+        .gender .male,
+        .gender .female {
+            margin-top: 20px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            /* justify-content: space-between; */
+            /* border: 1px solid white; */
+            width: 25%;
+        }
+
+        .gender>.female label,
+        .gender>.male label {
+            color: white;
+            font-size: 18px;
+        }
+
+        .text p {
+            font-size: 10px;
+            margin-top: 19px;
+            color: white;
+        }
+
+        .text a {
+            font-size: 10px;
+            /* margin-top: 19px; */
+
+            color: white;
+        }
+
+        .left-footer>div>div>.button {
+            width: 80%;
+            margin-top: 30px;
+            height: 30px;
+            margin-bottom: 20px;
+
+        }
+
+        .left-footer>div>div>.button button {
+            width: 100%;
+            background-color: black;
+            color: white;
+            font-weight: 600;
+            border: 2px solid white;
+            height: 30px;
+        }
+
+        .left-footer>div>div>.button button:hover {
+            width: 100%;
+            background-color: white;
+            color: black;
+            border: 2px solid white;
+            height: 30px;
+        }
+
+        .right-footer {
+            border: 1px solid rgb(5, 5, 5);
+            width: 50%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 250px;
+        }
+
+        .right-footer>div {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+            /* border: 2px solid black; */
+        }
+
+        .right-footer>div>div {
+            /* border: 1px solid black; */
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 60%;
+        }
+
+        .right-footer>div h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            display: block;
+            font-size: 25px;
+        }
+
+        .right-footer>div {
+            text-align: center;
+        }
+
+        .right-footer .footer-images {
+            width: 50%;
+            /* border: 1px solid purple; */
+            display: flex;
+            align-items: center;
+            /* align-self: center; */
+            margin: auto;
+            justify-content: space-around;
+        }
+
+        :root {
+            --fontFamily: "Scto_Grotesk_Regular";
+        }
+
+        :root {
+            --blue: #007bff;
+            --indigo: #6610f2;
+            --purple: #6f42c1;
+            --pink: #e83e8c;
+            --red: #dc3545;
+            --orange: #fd7e14;
+            --yellow: #ffc107;
+            --green: #28a745;
+            --teal: #20c997;
+            --cyan: #17a2b8;
+            --white: #fff;
+            --gray: #6c757d;
+            --gray-dark: #343a40;
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --breakpoint-xs: 0;
+            --breakpoint-sm: 576px;
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 992px;
+            --breakpoint-xl: 1200px;
+            --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav></nav>
+    </header>
+    <div class="main-body">
+        <div class="left-image" id="left-image">
+
+        </div>
+        <div class="right-text" id="right-text">
+            <div class="summary" id="summary">ahjsdghjsdg</div>
+        </div>
+    </div>
+
+    <div class="youMayLike">
+        <h2>YOU MAY ALSO LIKE</h2>
+    </div>
+    <div class="moreImage">
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹12,999.00</h3>
+                <p>BLUE</p>
+                <p>D-MIHTRY Straight Men Blue Jeans</p>
+
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹11,999.00</h3>
+                <p>BLACK</p>
+                <p>T-MILES Regular Fit Men Black Polo</p>
+
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹44,999.00</h3>
+                <p>BLACk</p>
+                <p>AMWT-KOOPU-HT26 Regular Man Black </p>
+
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <img src="" alt="">
+            </div>
+            <div>
+                <h3>₹21,999.00</h3>
+                <p>BLACK</p>
+                <p>AMWB-BYOOM-HT21 Regular Man Black</p>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="upperFooter">
+        <div class="left-footer">
+            <div>
+            <div>
+                <h5>Sign up to never miss an update.</h5>
+                <div>
+
+
+                    <input type="text" placeholder="Enter Your Email address*">
+
+                </div>
+                <div class="gender">
+                    <div class="male">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Men</label>
+                    </div>
+                    <div class="female">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Woman</label>
+                    </div>
+
+                </div>
+                <div class="email">
+                    <p></p>
+                </div>
+                <div class="text">
+                    <p>By clicking Sign up you have read and agreed to our <a href="">privacy policy</a></p>
+                </div>
+                <div class="button">
+                    <button>Sign Up</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="right-footer">
+            <div>
+                <div>
+                    <h4>Connect with us on social media</h4>
+                    <div class="footer-images">
+                        <div>
+
+                            <a class="fa fa-instagram" style="font-size:36px" class="logo" href=""><img src=""
+                                    alt=""></a>
+                        </div>
+                        <div>
+                            <a class="fa fa-facebook-f" style="font-size:36px" href="" class="logo"></a>
+                        </div>
+                        <div>
+                            <a href=""><i class="fa fa-youtube-play" style="font-size:36px" class="logo"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    //     fetch('http://144.24.137.155:3000/products')
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data));
+    let additional = document.getElementById("summary")
+    let data = [{ "name": "P-Eder Slim Fit Women Pink Pants", "price": "34999", "color": "Pink", "stock_status": "out-of-stock", "description": "Part of the SS22 Fashion Show capsule, these trousers are cut from blended viscose satin. Garment-dyed for a faded look just like the original '90s Hush pants, they're finished with a double button closure and front utility-style pockets.", "care_instructions": "Machine wash at 105 °F, Do not bleach, Low iron, Do not dry clean, Do not tumble dry, Dry flat in the shade", "model_fit": "Model is wearing a size 27 and is 177 cm / 5'9\"", "return_time_limit": "Easy 30 Days Return", "material": "52%Cotton 43%Viscose-Rayon 5%Elastane-Spandex", "occasion": "Casual wear", "pattern": "Solid", "fit": "Slim Fit", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 N", "country_of_origin": "Italy", "name_of_commodity": "Pants", "style_code": "A05471 0HYZE35A", "discount": "0", "brand": "Diesel", "created_at": "2022-03-04 18:29:35", "image": { "main": "https://diesel.gumlet.io/product/410315409006/300/410315409006_1_9079.webp", "gallery": ["https://diesel.gumlet.io/product/410315409006/665/410315409006_1_7654.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_2_2288.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_3_7236.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_4_4961.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_5_3154.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_6_3079.webp"] }, "size": ["XS", "XL", "XS", "M"], "id": 0 }]
+    let leftImage = document.getElementById("left-image")
+    console.log(data[0].image.gallery)
+    DisplayImage(data[0].image.gallery)
+    function DisplayImage(data) {
+        leftImage.innerHTML = ""
+        data.forEach((element, index) => {
+            let div = document.createElement("div")
+            div.setAttribute("class", "left-side-images")
+            let img = document.createElement("img")
+            img.src = element
+            div.append(img)
+            leftImage.append(div)
+
+        })
+
+    }
+    let rightAppend = document.getElementById("right-text")
+    display(data)
+
+    additional.innerText = "hey"
+
+    // <-- Display SUmmary ---->
+
+    function display(data) {
+        rightAppend.innerHTML = ""
+        data.forEach((element, index) => {
+            let div = document.createElement("div")
+
+            let heading = document.createElement("h2")
+            heading.setAttribute("class", "heading")
+            heading.innerText = element.name
+
+            let price = document.createElement("p")
+            price.setAttribute("id", "price")
+            price.innerText = `MRP ₹${element.price}`
+
+            let p = document.createElement("p")
+            p.setAttribute("class", "p")
+            p.innerText = "Price inclusive of all taxes"
+
+            let imageDiv = document.createElement("div")
+            imageDiv.setAttribute("class", "imageDiv")
+            let image = document.createElement("img")
+            image.setAttribute("id", "image")
+            image.src = element.image.main;
+            imageDiv.append(image)
+
+
+            let color = document.createElement("p")
+            color.setAttribute("class", "color")
+            color.innerText = `COLOR :${element.color}`
+
+            let btn = document.createElement("div")
+            btn.setAttribute("class", "btn")
+            btn.setAttribute("id", "size-btn")
+            element.size.forEach((el, i) => {
+                let button = document.createElement("button")
+                button.classList.add("button")
+                button.innerText = element.size[i]
+                btn.append(button)
+
+            })
+            let ch = document.createElement("h4")
+            ch.innerText = `CHOOSE SIZE :`
+            let x = null;
+            // let buttonData=document.querySelector(".btn>.button:nth-child(1)")
+            // buttonData.style.backgroundColor="blue";
+            btn.addEventListener("click", function (event) {
+
+                if (event.target.tagName != "BUTTON") {
+                    return
+                }
+                // if(event.target.style.color=="black")
+                // {
+                //     console.log("hey")
+                //     event.target.style.backgroundColor="black"
+                // event.target.style.color="white"
+                // }
+
+                x = (event.target.innerText)
+
+                ch.innerText = `CHOOSE SIZE :  ${x}`
+            })
+
+
+            let pinCode = document.createElement("input")
+            pinCode.setAttribute("type", "text")
+            pinCode.setAttribute("maxlength", "6")
+            pinCode.setAttribute("class", "pinCode")
+
+            let checkDeliver = document.createElement("button")
+            checkDeliver.innerText = "Check Delivery"
+            checkDeliver.setAttribute("class", "check")
+            let expectedDelivery = document.createElement("p")
+
+            checkDeliver.addEventListener("click", function () {
+                expectedDelivery.innerText = "Expected delivery on Fri,3 Mar- Sun,4 Mar"
+            })
+
+            let addToCart = document.createElement("button")
+            addToCart.setAttribute("class", "cart")
+            addToCart.innerText = "ADD TO CART"
+
+
+            let divSum = document.createElement("div")
+            if (element.description) {
+
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let detailsData = document.createTextNode("DESCRIPTION")
+                summary.appendChild(detailsData)
+
+                let x = element.description.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+                })
+
+                details.appendChild(summary)
+
+            }
+
+            if (element.care_instructions) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let detailsData = document.createTextNode("CARE INSTRUCTION")
+                summary.appendChild(detailsData)
+
+                let x = element.care_instructions.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+                details.appendChild(summary)
+
+
+
+            }
+            if (element.model_fit) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let detailsData = document.createTextNode("MODEL FIT")
+                summary.appendChild(detailsData)
+                let x = element.model_fit.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+                    details.appendChild(pElmnt)
+                })
+
+
+                details.appendChild(summary)
+
+            }
+            if (element.return_time_limit) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let detailsData = document.createTextNode("RETURN TIME LIMIT")
+                summary.appendChild(detailsData)
+
+                let x = element.return_time_limit.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+
+                details.appendChild(summary)
+
+
+            }
+            if (element.other_details) {
+
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let detailsData = document.createTextNode("OTHER DETAILS")
+                summary.appendChild(detailsData)
+
+                let x = element.other_details.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+
+                details.appendChild(summary)
+
+
+            }
+            if (element.material) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let detailsData = document.createTextNode("Material")
+                summary.appendChild(detailsData)
+
+                let x = element.material.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+
+                details.appendChild(summary)
+
+            }
+
+
+            div.append(heading, price, p, color, imageDiv, ch, btn, expectedDelivery, pinCode, checkDeliver, addToCart)
+            rightAppend.append(div, divSum)
+        });
+    }
+</script>
+
+</html>
