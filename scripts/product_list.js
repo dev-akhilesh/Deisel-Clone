@@ -1,35 +1,59 @@
-import { _fetch } from "../external/scripts/api.js";
+import { _fetch, debounce } from "../external/scripts/api.js";
+
 const PRODUCT_URL = "http://localhost:3000/products";
+let queryString = null;
+let products = null;
+let currentPage = 1;
+let totalPages = null;
+const limitPerPage = 10;
 
+/************************ Creating URL parameters based on sorting values *******************/
+function createSortURLparameters(value) {
+    /* Sorting based on new arrival needs to be implemented manually */
+    if (value == "price-ascending") return "_sort=price&_order=asc";
+    if (value == "price-descending") return "_sort=price&_order=desc";
+    if (value == "discount-descending") return "_sort=discount&_order=desc";
+}
 
-
-function createURLparameters(selectedFilters) {
+/********************* Creating additional URL query parameters based on selected filtering options **************************/
+function createFilterURLparameters(selectedFilters) {
     let parameters = [];
     parameters.push(selectedFilters.color.map(color => `color=${color}`).join("&"));
-    /* For size there is a need for manual filtration */
+    /* For size there is a need for manual filtration - which is done after getting the products and through url parameters */
     parameters.push(selectedFilters.gender.map(gender => `gender=${gender}`).join("&"));
     parameters.push(selectedFilters.pattern.map(pattern => `pattern=${pattern}`).join("&"));
     parameters.push(selectedFilters.discount.map(discount => `discount=${discount}`).join("&"));
 
-    parameters = parameters.join("&");
+    parameters = parameters.filter(parameter => parameter)
 
-    parameters = parameters.split("");
-    // Getting rid of "&" at beginning
-    for (let i = 0; i < parameters.length; i++) {
-        if (parameters[i] === "&")
-            parameters.shift();
-        else
-            break;
-    }
-    // Getting rid of "&" at end
-    for (let i = parameters.length - 1; i >= 0; i--) {
-        if (parameters[i] === "&")
-            parameters.pop();
-        else
-            break;
-    }
+    return parameters.join("&");
+}
 
-    console.log(parameters.join(""));
+/**************************************** Sorting based on new Arrival ******************************************/
+function sortByNewArrivals(products) {
+    if (document.querySelector("#sort input[value=new-arrival]").checked)
+        return products.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
+    else
+        return products;
+}
+
+/********************* Manual filtering based on sizes ************************/
+function filterBySize(products, size) {
+    let allSizes = [...size.clothing, ...size.shoe];
+    return products.filter(product => {
+        if (!allSizes.length) return true;
+        else {
+            for (let i = 0; i < product.size.length; i++) {
+                if (allSizes.includes(product.size[i] + "")) return true;
+            }
+            return false;
+        }
+    })
+}
+
+/********************* Getting selected sorting options **************************/
+function getSortOption() {
+    return document.querySelector("#sort input[name=sort-option]:checked").value;
 }
 
 /******************** Getting selected filters *********************/
@@ -67,58 +91,10 @@ function getSelectedFilters() {
     return list;
 }
 
-/**************** Filtering the products based on the selected filters ******************/
-// function filterProducts(products) {
-
-//     let selectedFilters = getSelectedFilters();
-
-//     // Filtering based on color
-//     products = products.filter(product => !selectedFilters.color.length || selectedFilters.color.includes(product.color.toLowerCase()));
-
-//     // Filtering based on chothing size
-//     products = products.filter(product => {
-//         if (!["Footwear", "Sandals", "Sneakers"].includes(product.name_of_commodity)) {
-//             for (let i = 0; i < product.size.length; i++) {
-//                 if (!selectedFilters.clothing.length || selectedFilters.color.includes(product.size[i]))
-//                     return true;
-//             }
-//         }
-//         else
-//             return true;
-
-//         return false;
-//     });
-
-//     // Filtering based on shoe size
-//     products = products.filter(product => {
-//         if (["Footwear", "Sandals", "Sneakers"].includes(product.name_of_commodity)) {
-//             for (let i = 0; i < product.size.length; i++) {
-//                 if (!selectedFilters.shoe.length || selectedFilters.shoe.includes(product.size[i]))
-//                     return true;
-//             }
-//         }
-//         else
-//             return true;
-
-//         return false;
-//     });
-
-//     // Filtering based on gender
-//     products = products.filter(product => !selectedFilters.gender.length || selectedFilters.gender.includes(product.gender.toLowerCase()));
-
-//     // Filtering based on color
-//     products = products.filter(product => !selectedFilters.pattern.length || selectedFilters.pattern.includes(product.pattern.toLowerCase()));
-
-//     // Filtering based on color
-//     products = products.filter(product => !selectedFilters.discount.length || selectedFilters.discount.includes(product.discount.toLowerCase()));
-
-//     return products;
-// }
-
 /**************** Displaying the products ********************/
 function displayProducts(products) {
 
-    // console.log(products);
+    console.log(products);
 
 }
 
@@ -126,7 +102,7 @@ function displayProducts(products) {
 function createFilter(filterType, filterValue) {
     return `<div class="filter-option">
         <span class="fake-checkbox">
-            <input type="checkbox" data-type="${filterType}" data-value="${filterValue}" name="${filterType}-${filterValue.toLowerCase()}" class="filter-checkbox">
+            <input type="checkbox" data-type="${filterType}" data-value="${filterValue}" name="${filterType}-${filterValue.toLowerCase()}" class="filter-checkbox sieve">
         </span>
         <label for="${filterType}-${filterValue.toLowerCase()}">${filterValue}</label>
     </div>`;
@@ -184,31 +160,60 @@ function displayFilters(products) {
     document.querySelector("#filters .discount-filter").innerHTML += filterList.discount.map(discount => createFilter("discount", discount)).join("");
 }
 
+/************************* After window load ********************************/
 window.addEventListener("load", async () => {
     try {
-        let products = await _fetch(PRODUCT_URL);
+        queryString = new URLSearchParams(window.location.search).toString();
+
+        products = await _fetch(`${PRODUCT_URL}?${queryString}`);
         products = await products.json();
 
+        // Manual sorting based on new arrivals as it's the default value
+        products = sortByNewArrivals(products);
 
         displayFilters(products);
         displayProducts(products);
-
-
-        document.querySelector("#filters").addEventListener("change", (event) => {
-            if (!event.target.classList.contains("filter-checkbox")) return;
-
-            createURLparameters(getSelectedFilters())
-            displayProducts(products)
-        })
-
-
-
-
-        // let search = new URLSearchParams(window.location.search);
-        // console.log(search.toString("m"));
-
     } catch (error) {
         return error;
     }
 })
 
+/******************* Adding event listner to sieves ************************/
+document.querySelector("#sieve").addEventListener("change", async (event) => {
+    if (!event.target.classList.contains("sieve")) return;
+
+    let selectedFilters = getSelectedFilters();
+
+    currentPage = 1;
+    let newQueryString = `_limit=${limitPerPage}&_page=${currentPage}&${queryString}&${createFilterURLparameters(selectedFilters)}&${createSortURLparameters(getSortOption())}`;
+    while (true) {
+        if (newQueryString[0] == "&")
+            newQueryString = newQueryString.slice(1);
+        else if (newQueryString[newQueryString.length - 1] == "&")
+            newQueryString = newQueryString.slice(0, newQueryString.length - 1);
+        else
+            break;
+    }
+
+    products = await _fetch(`${PRODUCT_URL}?${newQueryString}`);
+    products = await products.json();
+
+    // Manual filtering based on size
+    products = filterBySize(products, selectedFilters.size);
+
+    // Manual sorting based on new arrivals
+    products = sortByNewArrivals(products);
+
+    displayProducts(products)
+})
+
+// /***************************** Adding scroll event to window for scroll based pagination ******************************/
+let debouncePaginition = debounce();
+window.addEventListener("scroll", async (event) => {
+    await debouncePaginition(async () => {
+        if (window.innerHeight + Math.ceil(window.pageYOffset) >= document.body.offsetHeight) {
+
+        }
+        return Promise.resolve();
+    }, 1000)
+})
