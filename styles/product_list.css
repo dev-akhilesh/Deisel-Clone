@@ -1,3 +1,58 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid black;
+}
+
+#modal-window {
+    background-color: aqua;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#modal-content {
+    width: 80%;
+    display: flex;
+}
+
+#modal-content .product-sizes-modal {
+    display: flex;
+}
+
+#modal-content .image-list {
+    position: relative;
+    width: 600px;
+    display: flex;
+}
+
+#modal-content img {
+    width: 100%;
+}
+
+#loading-modal {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+
+#modal-content .previous-img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#modal-content .next-img {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .lds-ring {
     display: inline-block;
     position: relative;
@@ -46,4 +101,8 @@
 
 .show {
     display: block;
+}
+
+.fade {
+    opacity: 0;
 }

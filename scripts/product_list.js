@@ -86,14 +86,21 @@ function getSieveQueryString() {
 /******************** Creating DOM Element for individual product ********************/
 function createProductElement(product) {
     return `
-        <div class="product-card">
-            <img src="${product.image}" alt="Image for product: ${product.name}">
-            <div class="product-brif">
-                <p class="product-price">${"₹" + product.price}</p>
-                <p class="product-color">${product.color}</p>
-                <p class="product-name">${product.name}</p>
+        <div class="product-card redirectable">
+            <img src="${product.image}" alt="Image for product: ${product.name}" class="redirectable">
+            <div class="product-brif redirectable">
+                <p class="product-price redirectable">${"₹" + product.price}</p>
+                <p class="product-color redirectable">${product.color}</p>
+                <p class="product-name redirectable">${product.name}</p>
             </div>
-            <button class="quick-view">Quick View</button>
+            <button class="quick-view" 
+                data-gallery=${JSON.stringify(product.gallery.map(element => element.image))}
+                data-name="${product.name}"
+                data-price=${product.price}
+                data-color="${product.color}"
+                data-sizes="${JSON.stringify(product.size)}"
+                data-description="${product.description}"
+            >Quick View</button>
         </div>
     `;
 }
@@ -288,4 +295,139 @@ window.addEventListener("scroll", async (event) => {
             currentPage--;
         return Promise.resolve();
     }, 500)
+})
+
+/******************* Taking an image URL and appending it to modal window image container
+                    and returning a promise that resolves when the image is loaded ************************/
+async function createAndAppendImage(imageURL) {
+    // Creating an image element and waiting for it to decode
+    let img = new Image();
+    img.src = imageURL;
+    await img.decode();
+
+    // Appending the image
+    document.querySelector("#modal-content .image-container").innerHTML = "";
+    document.querySelector("#modal-window .image-container").appendChild(img);
+}
+
+/********************* Creating the size element for modal window ********************/
+function createModalSizeElement(size) {
+    return `
+        <div class="product-size-div">
+            <span>${size}</span>
+        </div>
+    `
+}
+
+/******************** Adding static info to modal window - name, price etc.. *******************/
+function addStaticModalInfo(element) {
+    document.querySelector("#modal-content .product-name-modal").innerText = element.getAttribute("data-name");
+    document.querySelector("#modal-content .product-price-modal").innerText = element.getAttribute("data-price");
+    document.querySelector("#modal-content .product-description-modal").innerText = element.getAttribute("data-description");
+    document.querySelector("#modal-content .product-color-modal").innerText = element.getAttribute("data-color");
+
+    // Adding the sizes to the modal window
+    document.querySelector("#modal-content .product-sizes-modal").innerHTML = JSON.parse(element.getAttribute("data-sizes")).map(size => createModalSizeElement(size)).join("")
+}
+
+/**************************** Checkes whether to display the previous and next button or not ************************ */
+function modalImageButtonsVisibility(index, arrLength) {
+    if (index == 0) {
+        // Hiding the previous button as it is starting with the first image
+        document.querySelector("#modal-content .previous-img").classList.add("hide");
+        document.querySelector("#modal-content .previous-img").classList.remove("show");
+    }
+    else if (index > 0) {
+        // Show the previous button as it is not the first image
+        document.querySelector("#modal-content .previous-img").classList.remove("hide");
+        document.querySelector("#modal-content .previous-img").classList.add("show");
+    }
+
+    if (index == arrLength - 1) {
+        // Hiding the next button as it is the last image
+        document.querySelector("#modal-content .next-img").classList.add("hide");
+        document.querySelector("#modal-content .next-img").classList.remove("show");
+    }
+    else if (index < arrLength - 1) {
+        // Show the next button as it is not the last image
+        document.querySelector("#modal-content .next-img").classList.remove("hide");
+        document.querySelector("#modal-content .next-img").classList.add("show");
+    }
+}
+
+/***************************** Adding click event to "Quick View" button **********************************/
+document.querySelector("#products #list").addEventListener("click", async (event) => {
+    if (!event.target.classList.contains("quick-view")) return;
+
+    let images = JSON.parse(event.target.getAttribute("data-gallery"))
+    let index = 0;
+
+    await createAndAppendImage(images[index]);
+    addStaticModalInfo(event.target);
+    modalImageButtonsVisibility(index, images.length);
+
+    // Showing the modal window
+    document.querySelector("#modal-window").classList.remove("hide");
+    document.querySelector("#modal-window").classList.add("show");
+
+    /******************* Adding click event to previous image button ************************/
+    document.querySelector("#modal-content .previous-img").addEventListener("click", async () => {
+        // Show the loading animation
+        document.querySelector("#modal-window #loading-modal").classList.add("show");
+        document.querySelector("#modal-window #loading-modal").classList.remove("hide");
+
+        index--;
+        if (index < 0) {
+            index = 0;
+            modalImageButtonsVisibility(index, images.length);
+        }
+        else {
+            await createAndAppendImage(images[index]);
+            modalImageButtonsVisibility(index, images.length);
+        }
+
+        // Hide the loading animation
+        document.querySelector("#modal-window #loading-modal").classList.remove("show");
+        document.querySelector("#modal-window #loading-modal").classList.add("hide");
+    })
+
+    /******************* Adding click event to next image button ************************/
+    document.querySelector("#modal-content .next-img").addEventListener("click", async () => {
+        // Show the loading animation
+        document.querySelector("#modal-window #loading-modal").classList.add("show");
+        document.querySelector("#modal-window #loading-modal").classList.remove("hide");
+
+        index++;
+        if (index >= images.length) {
+            index = images.length - 1
+            modalImageButtonsVisibility(index, images.length);
+        }
+        else {
+            await createAndAppendImage(images[index]);
+            modalImageButtonsVisibility(index, images.length);
+        }
+
+        // Hide the loading animation
+        document.querySelector("#modal-window #loading-modal").classList.remove("show");
+        document.querySelector("#modal-window #loading-modal").classList.add("hide");
+    })
+
+    /************************************ Adding click event to close button **********************************/
+    document.querySelector("#modal-window .close-button").addEventListener("click", () => {
+        // Resetting the modal window
+        images = [];
+        index = 0;
+        document.querySelector("#modal-content .image-container").innerHTML = "";
+
+        // Hide the modal window
+        document.querySelector("#modal-window").classList.add("hide");
+        document.querySelector("#modal-window").classList.remove("show");
+    })
+})
+
+/************************** Adding event listner to the products cards that will redirect to indevidual page ****************************/
+document.querySelector("#products #list").addEventListener("click", async (event) => {
+    if (!event.target.classList.contains("redirectable")) return;
+
+
 })
