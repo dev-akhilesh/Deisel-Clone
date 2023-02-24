@@ -1,0 +1,43 @@
+#h3{
+
+    text-align: center;
+    font-size: 50px;
+}
+
+#mid{
+    display: flex;
+    width: 80%;
+    /* border: 1px solid red; */
+    height: 100vh;
+    gap: 10px;
+    margin: auto;
+}
+#cart{
+
+    background-color: aqua;
+    width: 60%;
+}
+#discount{
+
+    /* background-color: red; */
+    /* border: 1px solid teal; */
+    width:40%;
+}
+#coupon{
+    width: 70%;
+    height: 50px;
+}
+
+#coubtn{
+    height: 50px;
+    width: 29%;
+    color: antiquewhite;
+    background-color: black;
+}
+#checkoutbtn{
+    width: 100%;
+    background-color: black;
+    color: antiquewhite;
+    /* width: 100px */
+    height: 50px;
+}
