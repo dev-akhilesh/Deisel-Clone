@@ -3,13 +3,13 @@ import { _fetch, debounce } from "../external/scripts/api.js";
 const PRODUCT_URL = "http://localhost:3000/products";
 let queryString = null;
 let products = null;
-let currentPage = 1;
+let currentPage = null;
 let totalPages = null;
 const limitPerPage = 10;
 
 /************************ Creating URL parameters based on sorting values *******************/
 function createSortURLparameters(value) {
-    /* Sorting based on new arrival needs to be implemented manually */
+    if (value == "new-arrival") return "_sort=created_at&_order=desc";
     if (value == "price-ascending") return "_sort=price&_order=asc";
     if (value == "price-descending") return "_sort=price&_order=desc";
     if (value == "discount-descending") return "_sort=discount&_order=desc";
@@ -19,40 +19,18 @@ function createSortURLparameters(value) {
 function createFilterURLparameters(selectedFilters) {
     let parameters = [];
     parameters.push(selectedFilters.color.map(color => `color=${color}`).join("&"));
-    /* For size there is a need for manual filtration - which is done after getting the products and through url parameters */
+    parameters.push(selectedFilters.size.clothing.map(size => `size_like=\\b${size}\\b`).join("&"));
+    parameters.push(selectedFilters.size.shoe.map(size => `size_like=${size}`).join("&"));
     parameters.push(selectedFilters.gender.map(gender => `gender=${gender}`).join("&"));
     parameters.push(selectedFilters.pattern.map(pattern => `pattern=${pattern}`).join("&"));
     parameters.push(selectedFilters.discount.map(discount => `discount=${discount}`).join("&"));
 
     parameters = parameters.filter(parameter => parameter)
-
     return parameters.join("&");
 }
 
-/**************************************** Sorting based on new Arrival ******************************************/
-function sortByNewArrivals(products) {
-    if (document.querySelector("#sort input[value=new-arrival]").checked)
-        return products.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
-    else
-        return products;
-}
-
-/********************* Manual filtering based on sizes ************************/
-function filterBySize(products, size) {
-    let allSizes = [...size.clothing, ...size.shoe];
-    return products.filter(product => {
-        if (!allSizes.length) return true;
-        else {
-            for (let i = 0; i < product.size.length; i++) {
-                if (allSizes.includes(product.size[i] + "")) return true;
-            }
-            return false;
-        }
-    })
-}
-
 /********************* Getting selected sorting options **************************/
-function getSortOption() {
+function getSelectedSortOption() {
     return document.querySelector("#sort input[name=sort-option]:checked").value;
 }
 
@@ -89,6 +67,16 @@ function getSelectedFilters() {
     });
 
     return list;
+}
+
+/******************************* Making a query string based on all the sieve parameters ****************************/
+function getSieveQueryString() {
+    let filterQuery = createFilterURLparameters(getSelectedFilters());
+    let sortQuery = createSortURLparameters(getSelectedSortOption());
+
+    if (!filterQuery && !sortQuery) return "";
+    if (!filterQuery || !sortQuery) return filterQuery || sortQuery;
+    if (filterQuery && sortQuery) return `${filterQuery}&${sortQuery}`;
 }
 
 /**************** Displaying the products ********************/
@@ -165,11 +153,10 @@ window.addEventListener("load", async () => {
     try {
         queryString = new URLSearchParams(window.location.search).toString();
 
-        products = await _fetch(`${PRODUCT_URL}?${queryString}`);
+        // Getting sorted value based on new arrivals as it's the default value
+        currentPage = 1;
+        products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&_sort=created_at&_order=desc${queryString == "" ? "" : `&${queryString}`}`);
         products = await products.json();
-
-        // Manual sorting based on new arrivals as it's the default value
-        products = sortByNewArrivals(products);
 
         displayFilters(products);
         displayProducts(products);
@@ -182,29 +169,12 @@ window.addEventListener("load", async () => {
 document.querySelector("#sieve").addEventListener("change", async (event) => {
     if (!event.target.classList.contains("sieve")) return;
 
-    let selectedFilters = getSelectedFilters();
-
     currentPage = 1;
-    let newQueryString = `_limit=${limitPerPage}&_page=${currentPage}&${queryString}&${createFilterURLparameters(selectedFilters)}&${createSortURLparameters(getSortOption())}`;
-    while (true) {
-        if (newQueryString[0] == "&")
-            newQueryString = newQueryString.slice(1);
-        else if (newQueryString[newQueryString.length - 1] == "&")
-            newQueryString = newQueryString.slice(0, newQueryString.length - 1);
-        else
-            break;
-    }
-
-    products = await _fetch(`${PRODUCT_URL}?${newQueryString}`);
+    let sieveQueryString = getSieveQueryString();
+    products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
     products = await products.json();
 
-    // Manual filtering based on size
-    products = filterBySize(products, selectedFilters.size);
-
-    // Manual sorting based on new arrivals
-    products = sortByNewArrivals(products);
-
-    displayProducts(products)
+    displayProducts(products);
 })
 
 // /***************************** Adding scroll event to window for scroll based pagination ******************************/
