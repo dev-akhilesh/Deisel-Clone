@@ -5,6 +5,7 @@ const limitPerPage = 10;
 let queryString = null;
 let products = null;
 let currentPage = null;
+let currentProductCount = null;
 let totalPages = null;
 let debouncePaginition = debounce();
 let isLoaded = false;
@@ -164,37 +165,53 @@ function displayFilters(products) {
     document.querySelector("#filters .discount-filter").innerHTML += filterList.discount.map(discount => createFilter("discount", discount)).join("");
 }
 
+/******************************* Setting up some things as if it it's the first load of the page ********************************/
+async function setUpFromScratch(url) {
+    // Getting sorted value based on new arrivals as it's the default value
+    products = await _fetch(url);
+
+    // Setting the variables from scratch
+    currentPage = 1;
+    totalProducts = products.headers.get("x-total-count");
+    totalPages = Math.ceil(products.headers.get("x-total-count") / limitPerPage);
+    products = await products.json();
+    currentProductCount = products.length;
+
+    // If no products were fetched, display error message and return
+    if (totalProducts == 0) {
+        document.querySelector("#products #list").innerHTML = `<h2>No Matching Products Found :(</h2>`;
+        return;
+    }
+
+    // Displaying the products
+    document.querySelector("#products #list").innerHTML = "";
+    displayProducts(products);
+
+    // Making the parent element of loding animation element visible
+    document.querySelector("#loading").classList.remove("hide");
+    document.querySelector("#loading").classList.add("show");
+
+    // Displaying the current and total product count
+    document.querySelector("#loading span:nth-child(1)").innerText = currentProductCount;
+    document.querySelector("#loading span:nth-child(2)").innerText = totalProducts;
+}
+
 /************************* After window load ********************************/
 window.addEventListener("load", async () => {
     try {
+        // Getting the query parameters after the first page load and storing for future fetching operations
         queryString = new URLSearchParams(window.location.search).toString();
 
-        // Getting sorted value based on new arrivals as it's the default value
-        currentPage = 1;
-        products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&_sort=created_at&_order=desc${queryString == "" ? "" : `&${queryString}`}`);
-        totalProducts = products.headers.get("x-total-count");
-        totalPages = Math.ceil(products.headers.get("x-total-count") / limitPerPage);
-        products = await products.json();
-
-        if (totalProducts == 0) {
-            document.querySelector("#products #list").innerHTML = `<h2>No Matching Products Found :(</h2>`;
-            return;
-        }
-
-        // Fetching all products to get the filter list
+        // Fetching products only based on first url query parameters to get the filter list
         let _products = await _fetch(`${PRODUCT_URL}?${queryString == "" ? "" : `&${queryString}`}`);
         _products = await _products.json();
         displayFilters(_products);
 
-        document.querySelector("#products #list").innerHTML = "";
-        displayProducts(products);
-        document.querySelector("#loading").classList.remove("hide");
-        document.querySelector("#loading").classList.add("show");
-        document.querySelector("#loading span:nth-child(1)").innerText = currentPage * limitPerPage;
-        document.querySelector("#loading span:nth-child(2)").innerText = totalProducts;
+        await setUpFromScratch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=1&_sort=created_at&_order=desc${queryString == "" ? "" : `&${queryString}`}`);
 
         isLoaded = true;
     } catch (error) {
+        // If fetching promise is getting rejected, display error message
         document.querySelector("#products #list").innerHTML = `<h2>Problem Fetching From The Server :(</h2>`;
         console.error(error);
     }
@@ -204,33 +221,66 @@ window.addEventListener("load", async () => {
 document.querySelector("#sieve").addEventListener("change", async (event) => {
     if (!event.target.classList.contains("sieve")) return;
 
-    currentPage = 1;
-    let sieveQueryString = getSieveQueryString();
-    products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
-    products = await products.json();
+    try {
+        // Making the parent element of loding animation element hidden
+        document.querySelector("#loading").classList.add("hide");
+        document.querySelector("#loading").classList.remove("show");
 
-    document.querySelector("#products #list").innerHTML = "";
-    displayProducts(products);
+        // Getting the sieve value as query parameters
+        let sieveQueryString = getSieveQueryString();
+
+        await setUpFromScratch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=1${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
+
+    } catch (error) {
+        document.querySelector("#products #list").innerHTML = `<h2>Problem Fetching From The Server :(</h2>`;
+        console.error(error);
+    }
 })
 
-// /***************************** Adding scroll event to window for scroll based pagination ******************************/
+/***************************** Adding scroll event to window for scroll based pagination ******************************/
 window.addEventListener("scroll", async (event) => {
     await debouncePaginition(async () => {
         currentPage++;
         if (currentPage <= totalPages) {
+            // If user is at the bottom of the page
             if (window.innerHeight + Math.ceil(window.pageYOffset) >= document.body.offsetHeight) {
                 if (isLoaded) {
-                    isLoaded = false;
+                    try {
+                        isLoaded = false;
 
-                    let sieveQueryString = getSieveQueryString();
-                    products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
-                    products = await products.json();
+                        // Showing the animation element
+                        document.querySelector("#loading .lds-ring").classList.remove("hide");
+                        document.querySelector("#loading .lds-ring").classList.add("show");
 
-                    displayProducts(products);
-                    document.querySelector("#loading span:nth-child(1)").innerText = currentPage * limitPerPage;
-                    document.querySelector("#loading span:nth-child(2)").innerText = totalProducts;
+                        // Getting the sieve value as query parameters and fetching the products with peginition
+                        let sieveQueryString = getSieveQueryString();
+                        products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
+                        products = await products.json();
 
-                    isLoaded = true;
+                        // Hide the animation element as products are fetched successfully
+                        document.querySelector("#loading .lds-ring").classList.add("hide");
+                        document.querySelector("#loading .lds-ring").classList.remove("show");
+
+                        // Displaying the products
+                        displayProducts(products);
+
+                        // Displaying the current and total product count
+                        currentProductCount += products.length;
+                        document.querySelector("#loading span:nth-child(1)").innerText = currentProductCount;
+                        document.querySelector("#loading span:nth-child(2)").innerText = totalProducts;
+
+                        isLoaded = true;
+                    } catch (error) {
+                        // If fetching promise is getting rejected, display error message and also decrease the page number as the page couldn't been fetched
+                        currentPage--;
+
+                        // Hiding the animation element
+                        document.querySelector("#loading .lds-ring").classList.add("hide");
+                        document.querySelector("#loading .lds-ring").classList.remove("show");
+
+                        document.querySelector("#products #list").innerHTML = `<h2>Problem Fetching More Products From The Server :(</h2>`;
+                        console.error(error);
+                    }
                 }
             }
         }
