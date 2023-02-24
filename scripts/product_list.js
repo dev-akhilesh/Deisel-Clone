@@ -1,11 +1,14 @@
 import { _fetch, debounce } from "../external/scripts/api.js";
 
 const PRODUCT_URL = "http://localhost:3000/products";
+const limitPerPage = 10;
 let queryString = null;
 let products = null;
 let currentPage = null;
 let totalPages = null;
-const limitPerPage = 10;
+let debouncePaginition = debounce();
+let isLoaded = false;
+let totalProducts = null;
 
 /************************ Creating URL parameters based on sorting values *******************/
 function createSortURLparameters(value) {
@@ -79,11 +82,24 @@ function getSieveQueryString() {
     if (filterQuery && sortQuery) return `${filterQuery}&${sortQuery}`;
 }
 
-/**************** Displaying the products ********************/
+/******************** Creating DOM Element for individual product ********************/
+function createProductElement(product) {
+    return `
+        <div class="product-card">
+            <img src="${product.image}" alt="Image for product: ${product.name}">
+            <div class="product-brif">
+                <p class="product-price">${"₹" + product.price}</p>
+                <p class="product-color">${product.color}</p>
+                <p class="product-name">${product.name}</p>
+            </div>
+            <button class="quick-view">Quick View</button>
+        </div>
+    `;
+}
+
+/**************** Displaying the products by appending them to dom without removing the previous ones ********************/
 function displayProducts(products) {
-
-    console.log(products);
-
+    document.querySelector("#products #list").innerHTML += products.map(product => createProductElement(product));
 }
 
 /*************** Creating filter options DOM elements **************/
@@ -156,12 +172,31 @@ window.addEventListener("load", async () => {
         // Getting sorted value based on new arrivals as it's the default value
         currentPage = 1;
         products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&_sort=created_at&_order=desc${queryString == "" ? "" : `&${queryString}`}`);
+        totalProducts = products.headers.get("x-total-count");
+        totalPages = Math.ceil(products.headers.get("x-total-count") / limitPerPage);
         products = await products.json();
 
-        displayFilters(products);
+        if (totalProducts == 0) {
+            document.querySelector("#products #list").innerHTML = `<h2>No Matching Products Found :(</h2>`;
+            return;
+        }
+
+        // Fetching all products to get the filter list
+        let _products = await _fetch(`${PRODUCT_URL}?${queryString == "" ? "" : `&${queryString}`}`);
+        _products = await _products.json();
+        displayFilters(_products);
+
+        document.querySelector("#products #list").innerHTML = "";
         displayProducts(products);
+        document.querySelector("#loading").classList.remove("hide");
+        document.querySelector("#loading").classList.add("show");
+        document.querySelector("#loading span:nth-child(1)").innerText = currentPage * limitPerPage;
+        document.querySelector("#loading span:nth-child(2)").innerText = totalProducts;
+
+        isLoaded = true;
     } catch (error) {
-        return error;
+        document.querySelector("#products #list").innerHTML = `<h2>Problem Fetching From The Server :(</h2>`;
+        console.error(error);
     }
 })
 
@@ -174,16 +209,33 @@ document.querySelector("#sieve").addEventListener("change", async (event) => {
     products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
     products = await products.json();
 
+    document.querySelector("#products #list").innerHTML = "";
     displayProducts(products);
 })
 
 // /***************************** Adding scroll event to window for scroll based pagination ******************************/
-let debouncePaginition = debounce();
 window.addEventListener("scroll", async (event) => {
     await debouncePaginition(async () => {
-        if (window.innerHeight + Math.ceil(window.pageYOffset) >= document.body.offsetHeight) {
+        currentPage++;
+        if (currentPage <= totalPages) {
+            if (window.innerHeight + Math.ceil(window.pageYOffset) >= document.body.offsetHeight) {
+                if (isLoaded) {
+                    isLoaded = false;
 
+                    let sieveQueryString = getSieveQueryString();
+                    products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
+                    products = await products.json();
+
+                    displayProducts(products);
+                    document.querySelector("#loading span:nth-child(1)").innerText = currentPage * limitPerPage;
+                    document.querySelector("#loading span:nth-child(2)").innerText = totalProducts;
+
+                    isLoaded = true;
+                }
+            }
         }
+        else
+            currentPage--;
         return Promise.resolve();
-    }, 1000)
+    }, 500)
 })
