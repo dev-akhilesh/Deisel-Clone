@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/product_list.css">
     <title></title>
 </head>
 
@@ -46,27 +53,77 @@
                 <summary>Sort By</summary>
 
                 <div class="sort-option">
-                    <input type="radio" name="sort-option" id="new-arrival">
+                    <input type="radio" name="sort-option" value="new-arrival" class="sieve sort-option" checked>
                     <label for="new-arrival">New Arrival</label>
                 </div>
 
                 <div class="sort-option">
-                    <input type="radio" name="sort-option" id="price-ascending">
+                    <input type="radio" name="sort-option" value="price-ascending" class="sieve sort-option">
                     <label for="price-ascending">Price: Low to High</label>
                 </div>
 
                 <div class="sort-option">
-                    <input type="radio" name="sort-option" id="price-descending">
+                    <input type="radio" name="sort-option" value="price-descending" class="sieve sort-option">
                     <label for="price-descending">Price: High to Low</label>
                 </div>
 
                 <div class="sort-option">
-                    <input type="radio" name="sort-option" id="discount-descending">
+                    <input type="radio" name="sort-option" value="discount-descending" class="sieve sort-option">
                     <label for="discount-descending">Discount: High to Low</label>
                 </div>
             </details>
         </div>
     </section>
+
+    <section id="products">
+        <div id="list"></div>
+        <div id="loading" class="hide">
+            <div class="lds-ring hide">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <p>You've seen <span></span> of <span></span> product(s).</p>
+        </div>
+    </section>
+
+    <div id="modal-window" class="hide">
+        <div id="modal-content">
+            <div class="image-list">
+                <button class="previous-img">
+                    <span class="material-symbols-outlined">
+                        arrow_back_ios
+                    </span>
+                </button>
+
+                <div class="image-container"></div>
+
+                <button class="next-img">
+                    <span class="material-symbols-outlined">
+                        arrow_forward_ios
+                    </span>
+                </button>
+
+                <div id="loading-modal" class="hide">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="product-name-modal"></h2>
+                <p class="product-price-modal"></p>
+                <p class="product-color-modal"></p>
+                <div class="product-sizes-modal"></div>
+                <p class="product-description-modal"></p>
+            </div>
+            <span class="material-symbols-outlined close-button">close</span>
+        </div>
+    </div>
 </body>
 <script src="./scripts/product_list.js" type="module"></script>
 
