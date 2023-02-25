@@ -1,18 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
     padding: 0px;
     margin: 0px;
-    /* border: 1px solid black; */
 }
 
 body {
     background-color: #fff;
     padding: 0em 2% 5em 2%;
-    font-family: poppins, sans-serif;
 }
 
 #sieve {
+    font-family: 'Manrope', sans-serif;
     display: flex;
     justify-content: space-between;
     padding: 2em 0em;
@@ -108,6 +107,7 @@ body {
 }
 
 #list .product-card .product-price {
+    font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     padding: 0.5em 0em;
@@ -115,12 +115,14 @@ body {
 }
 
 #list .product-card .product-color {
+    font-family: 'Manrope', sans-serif;
     padding: 0.5em 0em;
     color: rgb(46, 46, 46);
     margin-left: 5px;
 }
 
 #list .product-card .product-name {
+    font-family: 'Manrope', sans-serif;
     padding: 1em 0em;
     color: rgb(46, 46, 46);
     margin-left: 5px;
@@ -130,6 +132,7 @@ body {
 }
 
 #list .product-card .quick-view {
+    font-family: 'Poppins', sans-serif;
     cursor: pointer;
     font-size: 1.2rem;
     font-weight: bold;
@@ -149,6 +152,7 @@ body {
 }
 
 #loading {
+    font-family: 'Manrope', sans-serif;
     width: fit-content;
     margin: auto;
     margin-top: 3em;
@@ -262,6 +266,7 @@ body {
 }
 
 #modal-content .static-info-modal {
+    font-family: 'Poppins', sans-serif;
     margin-left: 2em;
     display: flex;
     flex-direction: column;
@@ -270,6 +275,7 @@ body {
 }
 
 #modal-content .product-name-modal {
+    font-family: 'Montserrat', sans-serif;
     padding: 0.5em 0em;
     font-size: 2rem;
 }
