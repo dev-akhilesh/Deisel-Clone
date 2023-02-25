@@ -51,25 +51,26 @@
         <div id="sort">
             <details>
                 <summary>Sort By</summary>
+                <div class="option-container">
+                    <div class="sort-option">
+                        <input type="radio" name="sort-option" value="new-arrival" class="sieve sort-option" checked>
+                        <label for="new-arrival">New Arrival</label>
+                    </div>
 
-                <div class="sort-option">
-                    <input type="radio" name="sort-option" value="new-arrival" class="sieve sort-option" checked>
-                    <label for="new-arrival">New Arrival</label>
-                </div>
+                    <div class="sort-option">
+                        <input type="radio" name="sort-option" value="price-ascending" class="sieve sort-option">
+                        <label for="price-ascending">Price: Low to High</label>
+                    </div>
 
-                <div class="sort-option">
-                    <input type="radio" name="sort-option" value="price-ascending" class="sieve sort-option">
-                    <label for="price-ascending">Price: Low to High</label>
-                </div>
+                    <div class="sort-option">
+                        <input type="radio" name="sort-option" value="price-descending" class="sieve sort-option">
+                        <label for="price-descending">Price: High to Low</label>
+                    </div>
 
-                <div class="sort-option">
-                    <input type="radio" name="sort-option" value="price-descending" class="sieve sort-option">
-                    <label for="price-descending">Price: High to Low</label>
-                </div>
-
-                <div class="sort-option">
-                    <input type="radio" name="sort-option" value="discount-descending" class="sieve sort-option">
-                    <label for="discount-descending">Discount: High to Low</label>
+                    <div class="sort-option">
+                        <input type="radio" name="sort-option" value="discount-descending" class="sieve sort-option">
+                        <label for="discount-descending">Discount: High to Low</label>
+                    </div>
                 </div>
             </details>
         </div>
@@ -114,11 +115,12 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="static-info-modal">
                 <h2 class="product-name-modal"></h2>
                 <p class="product-price-modal"></p>
                 <p class="product-color-modal"></p>
                 <div class="product-sizes-modal"></div>
+                <p class="description-label">Description:</p>
                 <p class="product-description-modal"></p>
             </div>
             <span class="material-symbols-outlined close-button">close</span>

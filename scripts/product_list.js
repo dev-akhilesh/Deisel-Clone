@@ -107,17 +107,19 @@ function createProductElement(product) {
 
 /**************** Displaying the products by appending them to dom without removing the previous ones ********************/
 function displayProducts(products) {
-    document.querySelector("#products #list").innerHTML += products.map(product => createProductElement(product));
+    document.querySelector("#products #list").innerHTML += products.map(product => createProductElement(product)).join("");
 }
 
 /*************** Creating filter options DOM elements **************/
 function createFilter(filterType, filterValue) {
-    return `<div class="filter-option">
-        <span class="fake-checkbox">
-            <input type="checkbox" data-type="${filterType}" data-value="${filterValue}" name="${filterType}-${filterValue.toLowerCase()}" class="filter-checkbox sieve">
-        </span>
-        <label for="${filterType}-${filterValue.toLowerCase()}">${filterValue}</label>
-    </div>`;
+    return `
+        <div class="filter-option">
+            <span class="fake-checkbox">
+                <input type="checkbox" data-type="${filterType}" data-value="${filterValue}" name="${filterType}-${filterValue.toLowerCase()}" class="filter-checkbox sieve">
+            </span>
+            <label for="${filterType}-${filterValue.toLowerCase()}">${filterValue}</label>
+        </div>
+    `;
 }
 
 /********* Create the filter options list by: color, size: chothing & shoe, gender, pattern, discount ***********/
@@ -164,12 +166,12 @@ function displayFilters(products) {
     let filterList = createFilterList(products);
 
     // Creating color filter list
-    document.querySelector("#filters .color-filter").innerHTML += filterList.color.map(color => createFilter("color", color)).join("");
-    document.querySelector("#filters .chothing-size-filter").innerHTML += filterList.size.cloth.map(size => createFilter("chothing-size", size)).join("");
-    document.querySelector("#filters .shoe-size-filter").innerHTML += filterList.size.shoe.map(size => createFilter("shoe-size", size)).join("");
-    document.querySelector("#filters .gender-filter").innerHTML += filterList.gender.map(gender => createFilter("gender", gender)).join("");
-    document.querySelector("#filters .pattern-filter").innerHTML += filterList.pattern.map(pattern => createFilter("pattern", pattern)).join("");
-    document.querySelector("#filters .discount-filter").innerHTML += filterList.discount.map(discount => createFilter("discount", discount)).join("");
+    document.querySelector("#filters .color-filter").innerHTML += `<div class="option-container">${filterList.color.map(color => createFilter("color", color)).join("")}</div>`;
+    document.querySelector("#filters .chothing-size-filter").innerHTML += `<div class="option-container">${filterList.size.cloth.map(size => createFilter("chothing-size", size)).join("")}</div>`;
+    document.querySelector("#filters .shoe-size-filter").innerHTML += `<div class="option-container">${filterList.size.shoe.map(size => createFilter("shoe-size", size)).join("")}</div>`;
+    document.querySelector("#filters .gender-filter").innerHTML += `<div class="option-container">${filterList.gender.map(gender => createFilter("gender", gender)).join("")}</div>`;
+    document.querySelector("#filters .pattern-filter").innerHTML += `<div class="option-container">${filterList.pattern.map(pattern => createFilter("pattern", pattern)).join("")}</div>`;
+    document.querySelector("#filters .discount-filter").innerHTML += `<div class="option-container">${filterList.discount.map(discount => createFilter("discount", discount)).join("")}</div>`;
 }
 
 /******************************* Setting up some things as if it it's the first load of the page ********************************/
@@ -236,7 +238,7 @@ document.querySelector("#sieve").addEventListener("change", async (event) => {
         // Getting the sieve value as query parameters
         let sieveQueryString = getSieveQueryString();
 
-        await setUpFromScratch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=1${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
+        await setUpFromScratch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=1${sieveQueryString == "" ? "" : `&${sieveQueryString}`}${queryString == "" ? "" : `&${queryString}`}`);
 
     } catch (error) {
         document.querySelector("#products #list").innerHTML = `<h2>Problem Fetching From The Server :(</h2>`;
@@ -261,7 +263,7 @@ window.addEventListener("scroll", async (event) => {
 
                         // Getting the sieve value as query parameters and fetching the products with peginition
                         let sieveQueryString = getSieveQueryString();
-                        products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}&${sieveQueryString == "" ? "" : `&${sieveQueryString}`}`);
+                        products = await _fetch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=${currentPage}${sieveQueryString == "" ? "" : `&${sieveQueryString}`}${queryString == "" ? "" : `&${queryString}`}`);
                         products = await products.json();
 
                         // Hide the animation element as products are fetched successfully
@@ -322,7 +324,7 @@ function createModalSizeElement(size) {
 /******************** Adding static info to modal window - name, price etc.. *******************/
 function addStaticModalInfo(element) {
     document.querySelector("#modal-content .product-name-modal").innerText = element.getAttribute("data-name");
-    document.querySelector("#modal-content .product-price-modal").innerText = element.getAttribute("data-price");
+    document.querySelector("#modal-content .product-price-modal").innerText = "₹" + element.getAttribute("data-price");
     document.querySelector("#modal-content .product-description-modal").innerText = element.getAttribute("data-description");
     document.querySelector("#modal-content .product-color-modal").innerText = element.getAttribute("data-color");
 
@@ -368,10 +370,14 @@ document.querySelector("#products #list").addEventListener("click", async (event
 
     // Showing the modal window
     document.querySelector("#modal-window").classList.remove("hide");
-    document.querySelector("#modal-window").classList.add("show");
+    document.querySelector("#modal-window").classList.add("show-modal");
 
     /******************* Adding click event to previous image button ************************/
     document.querySelector("#modal-content .previous-img").addEventListener("click", async () => {
+        // Make the image div opaque
+        document.querySelector("#modal-content .image-container").classList.add("opaqued");
+        document.querySelector("#modal-content .image-container").classList.remove("cleared");
+
         // Show the loading animation
         document.querySelector("#modal-window #loading-modal").classList.add("show");
         document.querySelector("#modal-window #loading-modal").classList.remove("hide");
@@ -389,10 +395,18 @@ document.querySelector("#products #list").addEventListener("click", async (event
         // Hide the loading animation
         document.querySelector("#modal-window #loading-modal").classList.remove("show");
         document.querySelector("#modal-window #loading-modal").classList.add("hide");
+
+        // Make the image div clear
+        document.querySelector("#modal-content .image-container").classList.remove("opaqued");
+        document.querySelector("#modal-content .image-container").classList.add("cleared");
     })
 
     /******************* Adding click event to next image button ************************/
     document.querySelector("#modal-content .next-img").addEventListener("click", async () => {
+        // Make the image div opaque
+        document.querySelector("#modal-content .image-container").classList.add("opaqued");
+        document.querySelector("#modal-content .image-container").classList.remove("cleared");
+
         // Show the loading animation
         document.querySelector("#modal-window #loading-modal").classList.add("show");
         document.querySelector("#modal-window #loading-modal").classList.remove("hide");
@@ -410,6 +424,9 @@ document.querySelector("#products #list").addEventListener("click", async (event
         // Hide the loading animation
         document.querySelector("#modal-window #loading-modal").classList.remove("show");
         document.querySelector("#modal-window #loading-modal").classList.add("hide");
+
+        document.querySelector("#modal-content .image-container").classList.remove("opaqued");
+        document.querySelector("#modal-content .image-container").classList.add("cleared");
     })
 
     /************************************ Adding click event to close button **********************************/
@@ -421,7 +438,7 @@ document.querySelector("#products #list").addEventListener("click", async (event
 
         // Hide the modal window
         document.querySelector("#modal-window").classList.add("hide");
-        document.querySelector("#modal-window").classList.remove("show");
+        document.querySelector("#modal-window").classList.remove("show-modal");
     })
 })
 
