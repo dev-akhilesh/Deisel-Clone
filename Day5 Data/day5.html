@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap");
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Poppins;
+            box-sizing: border-box;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        .main-body {
+            display: flex;
+            min-height: 750px;
+            /* margin: auto; */
+            justify-content: center;
+
+        }
+
+        .left-image {
+            width: 67%;
+        }
+
+        .images {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            row-gap: 20px;
+            margin-bottom: 100px;
+        }
+
+        .left-image .left-side-images {
+            width: 90%;
+            /* border: 1px solid rebeccapurple; */
+        }
+
+        .left-image .left-side-images:hover {
+            cursor: pointer;
+            /* border: 1px solid rebeccapurple; */
+        }
+
+        .left-image .left-side-images img {
+            width: 100%;
+        }
+
+        .right-text {
+            width: 28%;
+            /* display: flex; */
+            /* border: 1px solid black; */
+        }
+
+        .right-text div .heading {
+            font-family: Montserrat;
+            font-size: 1.5rem;
+            margin: 0;
+            line-height: 2.125rem;
+            letter-spacing: .05rem;
+            font-weight: 700;
+            color: #000;
+            /* border-left: 2px solid black; */
+            text-transform: uppercase;
+        }
+
+        .right-text div .color {
+            margin-bottom: 3px;
+        }
+
+        .right-text div #price {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .right-text div .p {
+            margin-bottom: 3px;
+            /* border: 1px solid rebeccapurple; */
+        }
+
+        .right-text div .imageDiv {
+            width: 20%;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            border-bottom: 3px solid black;
+        }
+
+        .right-text div .imageDiv:hover {
+            cursor: pointer;
+        }
+
+        .right-text div .imageDiv img {
+            width: 100%;
+
+        }
+
+        .right-text div .btn .button {
+            /* display: block; */
+            height: 35px;
+            border: 1px solid rgb(109, 107, 107);
+            background-color: white;
+            color: black;
+        }
+
+        .right-text div .btn .button:hover {
+            /* display: block; */
+            /* height: 30px; */
+            /* border: 3px solid rgb(5, 5, 5); */
+            border: none;
+            background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+
+            /* color: black; */
+        }
+
+        .right-text div .btn {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 3px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .right-text div .btn:focus {
+           background-color: blue;
+        }
+
+        .right-text div .pinCode {
+            height: 30px;
+            width: 45%;
+            margin-bottom: 10px;
+        }
+
+        .right-text div .check {
+            height: 32px;
+            border: 1px solid black;
+            color: white;
+            border: none;
+            /* background-color: black; */
+            background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+            width: 40%;
+            margin-bottom: 10px;
+        }
+
+        .right-text div .cart {
+            height: 35px;
+            width: 80%;
+            display: block;
+            /* margin: auto; */
+            /* background-color: black; */
+            border: none;
+            background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+            color: white;
+
+        }
+
+        .upperFooter {
+            display: flex;
+            border: none;
+        }
+
+        .left-footer {
+            display: flex;
+            width: 50%;
+            background-color: black;
+        }
+
+        .right-footer {
+            background-color: #eeeeee;
+        }
+
+        .right-footer a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .left-footer h5 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            padding-bottom: 14px;
+            /* text-align: center; */
+        }
+
+        .left-footer>div {
+            width: 70%;
+            margin: auto;
+        }
+
+        .left-footer>div>div {
+            width: 60%;
+            margin: auto;
+            /* border: 1px solid white; */
+        }
+
+        .left-footer>div>div {
+            width: 89%;
+            margin: auto;
+        }
+
+        .left-footer>div>div>div>input {
+            width: 89%;
+            display: block;
+            height: 25px;
+        }
+
+        .gender {
+            display: flex;
+            align-items: center;
+            /* justify-content: space-around; */
+        }
+
+        .gender>.male>input,
+        .gender>.female>input {
+            /* height: 20px; */
+
+            border: 0px;
+            width: 20px;
+            margin-right: 5px;
+            height: 2em;
+            /* border: 1px solid white; */
+
+            color: white;
+        }
+
+        .gender .male,
+        .gender .female {
+            margin-top: 20px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            /* justify-content: space-between; */
+            /* border: 1px solid white; */
+            width: 25%;
+        }
+
+        .gender>.female label,
+        .gender>.male label {
+            color: white;
+            font-size: 18px;
+        }
+
+        .text p {
+            font-size: 10px;
+            margin-top: 19px;
+            color: white;
+        }
+
+        .text a {
+            font-size: 10px;
+            /* margin-top: 19px; */
+
+            color: white;
+        }
+
+        .left-footer>div>div>.button {
+            width: 80%;
+            margin-top: 30px;
+            height: 30px;
+            margin-bottom: 20px;
+
+        }
+        
+
+        .left-footer>div>div>.button button {
+            width: 100%;
+            background-color: black;
+            color: white;
+            font-weight: 600;
+            border: 2px solid white;
+            height: 30px;
+        }
+
+        .left-footer>div>div>.button button:hover {
+            width: 100%;
+            background-color: white;
+            color: black;
+            border: 2px solid white;
+            height: 30px;
+        }
+
+        .right-footer {
+            /* border: 1px solid rgb(5, 5, 5); */
+            width: 50%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 250px;
+        }
+
+        .right-footer>div {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+            /* border: 2px solid black; */
+        }
+
+        .right-footer>div>div {
+            /* border: 1px solid black; */
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 60%;
+        }
+
+        .right-footer>div h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            display: block;
+            font-size: 25px;
+        }
+
+        .right-footer>div {
+            text-align: center;
+        }
+
+        .right-footer .footer-images {
+            width: 50%;
+            /* border: 1px solid purple; */
+            display: flex;
+            align-items: center;
+            /* align-self: center; */
+            margin: auto;
+            justify-content: space-around;
+        }
+
+        :root {
+            --fontFamily: "Scto_Grotesk_Regular";
+        }
+
+        summary {
+            list-style: none;
+        }
+
+        .right {
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
+
+        details {
+            margin-top: 20px;
+        }
+
+        details li {
+            margin-top: 15px;
+            letter-spacing: .5px;
+            /* border: 1px solid red; */
+        }
+
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        }
+
+        .moreImage {
+            margin: auto;
+            width: 90%;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .moreImage>div {
+            width: 90%;
+            /* border: 1px solid black; */
+        }
+
+        .moreImage>div>.imageDiv {
+            width: 100%;
+            /* border: 1px solid black; */
+        }
+
+        .moreImage>div>.imageDiv img {
+            width: 100%;
+        }
+
+        .moreImage .price {
+            margin-bottom: 5px;
+            text-align: bottom;
+            margin-top: 5px;
+        }
+
+        .moreImage .color {
+            /* text-align: center; */
+            color: rgb(29, 28, 28);
+            ;
+        }
+
+        .moreImage .heading {
+            text-align: bottom;
+            color: rgb(29, 28, 28);
+        }
+
+        .moreImage>div:hover {
+            cursor: pointer;
+        }
+
+        .youMayLike {
+            margin-top: 180px;
+            /* border: 1px solid black; */
+            width: 90%;
+            margin: auto;
+        }
+
+
+        .width-images {
+            display: none;
+        }
+
+
+
+        :root {
+            --blue: #007bff;
+            --indigo: #6610f2;
+            --purple: #6f42c1;
+            --pink: #e83e8c;
+            --red: #dc3545;
+            --orange: #fd7e14;
+            --yellow: #ffc107;
+            --green: #28a745;
+            --teal: #20c997;
+            --cyan: #17a2b8;
+            --white: #fff;
+            --gray: #6c757d;
+            --gray-dark: #343a40;
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --breakpoint-xs: 0;
+            --breakpoint-sm: 576px;
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 992px;
+            --breakpoint-xl: 1200px;
+            --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        .anotherWindow{
+            display: none;
+            position: absolute;
+            height: 200px;
+        }
+        .hideImages{
+                display: none;
+            }
+            .showImages{
+                height: 200px;
+                width: 200px ;
+                background-color: black;
+            }
+        
+
+        @media screen and (max-width:1000px) {
+            .width-images {
+                display: inline;
+            }
+
+            .main-body {
+                display: block;
+            }
+
+            .left-image {
+                width: 95%;
+                margin: auto;
+            }
+
+            .right-text {
+                width: 98%;
+                margin: auto;
+            }
+
+            .right-text>div .pinCode {
+                width: 30%;
+            }
+
+            .right-text>div .check {
+                width: 30%;
+                
+            }
+
+            .youMayLike {
+                width: 98%;
+                margin-top: 30px;
+                font-size: 10px;
+            }
+
+            .upperFooter {
+                display: block;
+            }
+
+            .upperFooter .left-footer {
+                width: 99%;
+                margin: auto;
+
+            }
+
+            .upperFooter .right-footer {
+                width: 99%;
+                margin: auto;
+            }
+
+            .images {
+                display: none;
+            }
+
+            .mySlides {
+                display: none
+            }
+
+            .slideshow-container {
+                width: 100%;
+
+                position: relative;
+                border: 1px solid black;
+                /* margin: auto; */
+            }
+            details li{
+                font-family: Manrope;
+            }
+            details{
+                
+                font-weight: 900;
+            }
+
+            .mySlides {
+                width: 100%;
+                /* height: 500px; */
+                border: 1px solid black;
+            }
+
+            .mySlides img {
+                width: 100%;
+                /* height: 500px; */
+            }
+
+            .showImages{
+                display: block;
+            }
+            
+            .dot {
+                cursor: pointer;
+                height: 15px;
+                width: 15px;
+                margin: 0 2px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+                transition: background-color 0.6s ease;
+            }
+
+            .active,
+            .dot:hover {
+                background-color: #717171;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav></nav>
+    </header>
+    <div class="anotherWindow hideImages" id="anotherWindow">
+        <div id="insideAnotherWindow">
+
+        </div>
+    </div>
+        <div class="main-body">
+            <div class="left-image" id="left-image">
+                <div class="images" id="images"></div>
+                <div class="width-images" id="width-images">
+                    <div class="slideshow-container" id="slideshow-container">
+
+
+
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="right-text" id="right-text">
+                <div class="summary" id="summary"></div>
+            </div>
+        </div>
+
+        <div class="youMayLike">
+            <h1>YOU MAY ALSO LIKE</h2>
+        </div>
+        <div class="moreImage" id="moreImage">
+
+
+
+        </div>
+        <div class="upperFooter">
+            <div class="left-footer">
+                <div>
+                    <div>
+                        <h5>Sign up to never miss an update.</h5>
+                        <div>
+
+
+                            <input type="email" placeholder="Enter Your Email address*">
+
+                        </div>
+                        <div class="gender">
+                            <div class="male">
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="male">Men</label>
+                            </div>
+                            <div class="female">
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Woman</label>
+                            </div>
+
+                        </div>
+                        <div class="email">
+                            <p></p>
+                        </div>
+                        <div class="text">
+                            <p>By clicking Sign up you have read and agreed to our <a href="">privacy policy</a></p>
+                        </div>
+                        <div class="button">
+                            <button>Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-footer">
+                <div>
+                    <div>
+                        <h4>Connect with us on social media</h4>
+                        <div class="footer-images">
+                            <div>
+
+                                <a class="fa fa-instagram" style="font-size:36px" class="logo" href=""><img src=""
+                                        alt=""></a>
+                            </div>
+                            <div>
+                                <a class="fa fa-facebook-f" style="font-size:36px" href="" class="logo"></a>
+                            </div>
+                            <div>
+                                <a href=""><i class="fa fa-youtube-play" style="font-size:36px" class="logo"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+</body>
+<script>
+    // import{_fetch}from ""
+    // lowerImage.innerText="hey"
+    //     fetch('http://144.24.137.155:3000/products')
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data));
+    let additional = document.getElementById("summary")
+    let data = [{ "name": "P-Eder Slim Fit Women Pink Pants", "price": "34999", "color": "Pink", "stock_status": "out-of-stock", "description": "Part of the SS22 Fashion Show capsule, these trousers are cut from blended viscose satin. Garment-dyed for a faded look just like the original '90s Hush pants, they're finished with a double button closure and front utility-style pockets.", "care_instructions": "Machine wash at 105 °F, Do not bleach, Low iron, Do not dry clean, Do not tumble dry, Dry flat in the shade", "model_fit": "Model is wearing a size 27 and is 177 cm / 5'9\"", "return_time_limit": "Easy 30 Days Return", "material": "52%Cotton 43%Viscose-Rayon 5%Elastane-Spandex", "occasion": "Casual wear", "pattern": "Solid", "fit": "Slim Fit", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 N", "country_of_origin": "Italy", "name_of_commodity": "Pants", "style_code": "A05471 0HYZE35A", "discount": "0", "brand": "Diesel", "created_at": "2022-03-04 18:29:35", "image": { "main": "https://diesel.gumlet.io/product/410315409006/300/410315409006_1_9079.webp", "gallery": ["https://diesel.gumlet.io/product/410315409006/665/410315409006_1_7654.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_2_2288.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_3_7236.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_4_4961.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_5_3154.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_6_3079.webp"] }, "size": ["XS", "XL", "XS", "M"], "id": 0 }]
+    // console.log(data.image)
+
+
+
+
+    let lowerImageData = [{ "name": "S-Gir Regular Fit Men Black Sweater", "price": "12999", "color": "Black", "stock_status": "out-of-stock", "description": "Crew-neck sweatshirt crafted from cotton fleece. The small jacquard patch on the chest nods to a Diesel logo from the 90s. Finished with ripped detailing on the collar, sleeves and hem.\nThanks to an innovative technology called \" Protector Shield TM which is a combination of certificated antibacterical and antimicrobial product and droplet barrier, your garments are protected against bacteria, fungi and dust mites that can wreak havoc and can create odors, cause allergic reactions, and can be responsible for creating stains. Protector ShieldTM is a brand owned by Nearchimica.", "care_instructions": "Machine wash at 30 °C, Do not bleach, Do not tumble dry, Iron at max 110 °C, Do not dry clean and Dry flat in the shade.", "model_fit": "Skinny", "return_time_limit": "Easy 30 Days Return", "material": "100%Cotton, Rib 95%Cotton 5%Elastane-Spandex", "occasion": "Casual Wear", "pattern": "Solid", "fit": "Regular Fit", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 U", "country_of_origin": "Bulgaria", "name_of_commodity": "Sweaters", "style_code": "00S556 AIAJH900", "discount": "0", "brand": "Diesel", "created_at": "2021-10-04 19:36:14", "image": { "main": "https://diesel.gumlet.io/product/410287705001/300/410287705001_1.jpg", "gallery": ["https://diesel.gumlet.io/product/410287705001/665/410287705001_1.jpg", "https://diesel.gumlet.io/product/410287705001/665/410287705001_2.jpg", "https://diesel.gumlet.io/product/410287705001/665/410287705001_3.jpg", "https://diesel.gumlet.io/product/410287705001/665/410287705001_4.jpg"] }, "size": ["XS", "M", "XL", "S", "XS"], "id": 1 },
+    { "name": "T-JUST-DOVAL-PJ Regular Patch Black T-shirts", "price": "6999", "color": "Black", "stock_status": "in-stock", "description": "This unisex T-shirt is crafted from organic cotton. Its regular-fit silhouette features a jacquard oval 'D' patch on the chest.", "care_instructions": "Wash at 30° C - Delicate cycle Do not bleach Low iron Do not dry clean Do not tumble dry Dry flat in the shade", "model_fit": "Model is wearing a size L and is 182 cm / 5'10''. Model is wearing a size S and is 175 cm / 5'7''.", "return_time_limit": "Easy 30 days return", "material": "100%Cotton", "occasion": "Casual", "pattern": "Patch", "fit": "Regular", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 N", "country_of_origin": "CHINA", "name_of_commodity": "Topwear", "style_code": "A03819 0AIJU86V", "discount": "0", "brand": "Diesel", "created_at": "2022-12-30 13:11:06", "image": { "main": "https://diesel.gumlet.io/product/410372554006/300/410372554006_1_6203.webp", "gallery": ["https://diesel.gumlet.io/product/410372554006/665/410372554006_1_6807.webp", "https://diesel.gumlet.io/product/410372554006/665/410372554006_2_7123.webp", "https://diesel.gumlet.io/product/410372554006/665/410372554006_3_6008.webp", "https://diesel.gumlet.io/product/410372554006/665/410372554006_4_3658.webp", "https://diesel.gumlet.io/product/410372554006/665/410372554006_5_9268.webp"] }, "size": ["XL", "L", "M", "XS", "XS", "XS"], "id": 2 },
+    { "name": "T-SMITH-D Slim Fit Men White Polo", "price": "9999", "color": "White", "stock_status": "in-stock", "description": "This polo shirt is crafted for a slim fit from substantial cotton pique. It features striped trims and a small 'D' logo appliqued on the chest.", "care_instructions": "Wash at 30° C - Delicate cycle; Do not bleach; Low iron; Do not dry clean; Do not tumble dry; Dry flat in the shade", "model_fit": "Model is wearing a size L and is 182 cm / 5'10''", "return_time_limit": "Easy 30 Days Return", "material": "Cotton", "occasion": "Casual", "pattern": "Solid", "fit": "Slim Fit", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 N", "country_of_origin": "China", "name_of_commodity": "Polo", "style_code": "A03838 0MXZA100", "discount": "0", "brand": "Diesel", "created_at": "2022-01-31 15:21:29", "image": { "main": "https://diesel.gumlet.io/product/410315144015/300/410315144013_1_6798.webp", "gallery": ["https://diesel.gumlet.io/product/410315144015/665/410315144013_1_2047.webp", "https://diesel.gumlet.io/product/410315144015/665/410315144013_2_9580.webp", "https://diesel.gumlet.io/product/410315144015/665/410315144013_3_4823.webp", "https://diesel.gumlet.io/product/410315144015/665/410315144013_4_9209.webp", "https://diesel.gumlet.io/product/410315144015/665/410315144013_5_9557.webp"] }, "size": ["XS", "XS", "M"], "id": 3 },
+    { "name": "AMSB-RELAMN-RW33 Regular Man Black Pants", "price": "32999", "color": "Black", "stock_status": "in-stock", "description": "Men's DIESEL SPORT joggers from the Fall '22 Runway Show collection collection, crafted from plush teddy-jacquard with a graphic 'D' logo pattern. The crinkled nylon waistband matches the cuffs and has a toggled elastic cord to adjust the fit.", "care_instructions": "Hand wash Do not bleach Do not iron Dry clean Do not tumble dry Dry flat in the shade", "model_fit": "Model is wearing a size L and is 188 cm / 6'2\"", "return_time_limit": "Easy 30 days return", "material": "Polyester", "occasion": "Casual", "pattern": "Solid", "fit": "Regular", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 N", "country_of_origin": "ITALY", "name_of_commodity": "Bottomwear", "style_code": "A08281 0JLAK900", "discount": "0", "brand": "Diesel", "created_at": "2022-12-07 12:14:06", "image": { "main": "https://diesel.gumlet.io/product/410345324004/300/410345324004_1_8219.webp", "gallery": ["https://diesel.gumlet.io/product/410345324004/665/410345324004_1_3015.webp", "https://diesel.gumlet.io/product/410345324004/665/410345324004_2_2830.webp", "https://diesel.gumlet.io/product/410345324004/665/410345324004_3_8925.webp", "https://diesel.gumlet.io/product/410345324004/665/410345324004_4_6520.webp", "https://diesel.gumlet.io/product/410345324004/665/410345324004_5_6998.webp", "https://diesel.gumlet.io/product/410345324004/665/410345324004_6_8421.webp"] }, "size": ["M", "L", "XS", "S"], "id": 4 }]
+
+    let lsData = JSON.parse(localStorage.getItem("cart")) || [];
+    let imageData = data[0].image.gallery;
+    let leftImage = document.getElementById("images")
+    let rightAppend = document.getElementById("right-text")
+    let anotherWindow = document.getElementById("anotherWindow")
+    let lowerImage = document.getElementById("moreImage")
+
+    let insideAnotherWindow=document.getElementById("insideAnotherWindow")
+
+
+
+
+
+    console.log(window.location.href)
+    DisplayImage(data[0].image.gallery)
+    display(data)
+    DisplayLowerImage(lowerImageData)
+
+    function DisplayImage(data) {
+        leftImage.innerHTML = ""
+        data.forEach((element, index) => {
+            let div = document.createElement("div")
+            div.setAttribute("class", "left-side-images")
+            let img = document.createElement("img")
+
+            img.src = element
+            
+            img.addEventListener("click", function () {
+                imageData.forEach((el)=>
+                {
+                    let button=document.createElement("button")
+                    .addEventListener("click",function()
+                    {
+                        click.classList.add("hideImages")
+                    })
+                    let imageDiv=document.createElement("div")
+
+                    let insideImage=document.createElement("img")
+                    insideImage.src=el;
+                    div.append(insideImage,click)
+                    insideAnotherWindow.append(div)
+
+                })
+            
+            
+            anotherWindow.style.display="block"
+                
+            })
+
+            div.append(img)
+            leftImage.append(div)
+
+        })
+
+    }
+   
+    function DisplayLowerImage(data) {
+        lowerImage.innerHTML = ""
+        data.forEach((element, i) => {
+            let div = document.createElement('div')
+
+
+            let imageDiv = document.createElement('div')
+            imageDiv.setAttribute("class", "imageDiv")
+            let img = document.createElement('img')
+            img.src = element.image.main
+
+            imageDiv.append(img)
+
+            let price = document.createElement("h4")
+            price.setAttribute("class", "price")
+            price.innerText = `₹ ${element.price}`
+
+            let color = document.createElement("p")
+            color.setAttribute("class", "color")
+            color.innerText = element.color;
+
+            let heading = document.createElement("p")
+            heading.innerText = element.name;
+            heading.setAttribute("class", "heading")
+
+            div.append(imageDiv, price, color, heading)
+            lowerImage.append(div)
+        })
+    }
+    lowerImage.addEventListener("click", function () {
+
+    })
+    // <-- Display SUmmary ---->
+
+    function display(data) {
+        rightAppend.innerHTML = ""
+        data.forEach((element, index) => {
+            let div = document.createElement("div")
+
+            let heading = document.createElement("h2")
+            heading.setAttribute("class", "heading")
+            heading.innerText = element.name
+
+            let price = document.createElement("p")
+            price.setAttribute("id", "price")
+            price.innerText = `MRP ₹${element.price}`
+
+            let p = document.createElement("p")
+            p.setAttribute("class", "p")
+            p.innerText = "Price inclusive of all taxes"
+
+            let imageDiv = document.createElement("div")
+            imageDiv.setAttribute("class", "imageDiv")
+            let image = document.createElement("img")
+            image.setAttribute("id", "image")
+            image.src = element.image.main;
+            imageDiv.append(image)
+
+
+            let color = document.createElement("p")
+            color.setAttribute("class", "color")
+            color.innerText = `COLOR :${element.color}`
+
+            let btn = document.createElement("div")
+            btn.setAttribute("class", "btn")
+            btn.setAttribute("id", "size-btn")
+            element.size.forEach((el, i) => {
+                let button = document.createElement("button")
+                button.classList.add("button")
+                button.innerText = element.size[i]
+                btn.append(button)
+
+            })
+            let sizeChart = document.createElement("div")
+            sizeChart.style.display = "flex"
+            sizeChart.style.justifyContent = "space-between"
+            let a = document.createElement("a")
+            a.setAttribute("href", "")
+
+            a.innerText = ("SIZE CHART")
+            a.style.color = "red"
+            let ch = document.createElement("h4")
+            ch.innerText = `CHOOSE SIZE :`
+            sizeChart.append(ch, a)
+            let x = null;
+            // let buttonData=document.querySelector(".btn>.button:nth-child(1)")
+            // buttonData.style.backgroundColor="blue";
+            btn.addEventListener("click", function (event) {
+
+                if (event.target.tagName != "BUTTON") {
+                    return
+                }
+                let buttonClick=document.querySelectorAll(".button")
+                buttonClick.forEach((el)=>
+                {
+                    el.style.backgroundColor="white"
+                    el.style.background="white"
+                    el.style.color="black"
+                })
+                event.target.style.background="radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%)";
+                event.target.style.color="white"
+                
+                x = (event.target.innerText)
+
+                ch.innerText = `CHOOSE SIZE :  ${x}`
+            })
+
+            //  <----DELIVERY------>   
+            let pinCode = document.createElement("input")
+            pinCode.setAttribute("type", "text")
+            pinCode.setAttribute("maxlength", "6")
+            pinCode.setAttribute("class", "pinCode")
+
+            let checkDeliver = document.createElement("button")
+            checkDeliver.innerText = "Check Delivery"
+            checkDeliver.setAttribute("class", "check")
+            let expectedDelivery = document.createElement("p")
+
+            checkDeliver.addEventListener("click", function () {
+                expectedDelivery.innerText = "Expected delivery on Fri,3 Mar- Sun,4 Mar"
+                expectedDelivery.style.color = "green"
+            })
+            //<-----cart---->
+            let addToCart = document.createElement("button")
+            addToCart.setAttribute("class", "cart")
+            addToCart.innerText = "ADD TO CART"
+            addToCart.addEventListener("click", function () {
+                // console.log(pinCode.value)
+                if (pinCode.value == "") {
+
+                    alert("Please Check For Availability at Your Location")
+                }
+                else {
+                    if (x == null) {
+                        alert("Please Select Size First")
+                    }
+                    else {
+                        if (Duplicate(element)) {
+                            alert("Product Already in Cart")
+                        }
+                        else {
+                            lsData.push({ ...element, quantity: 1 })
+                            localStorage.setItem("cart", JSON.stringify(lsData))
+                            alert("Product Added To Cart")
+                        }
+                    }
+                }
+
+            })
+
+            // additional information
+            let divSum = document.createElement("div")
+            if (element.description) {
+
+                let details = document.createElement("details")
+                divSum.append(details)
+
+                let summary = document.createElement("summary")
+
+                let i = document.createElement("i")
+                i.setAttribute("class", "arrow right")
+                let count = 0;
+                summary.addEventListener("click", function () {
+                    if (count % 2 == 0) {
+                        i.style.transform = 'rotate(45deg)';
+                    }
+                    else {
+                        i.style.transform = 'rotate(220deg)';
+                    }
+                    count++
+                })
+
+                let detailsData = document.createTextNode("DESCRIPTION           ")
+                summary.appendChild(detailsData)
+
+                summary.appendChild(i)
+
+
+                let x = element.description.split(". ")
+
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    txt2.fontFamily="Manrope"
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+                })
+
+                details.appendChild(summary)
+
+            }
+
+            if (element.care_instructions) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let i = document.createElement("i")
+                i.setAttribute("class", "arrow right")
+                let count = 0;
+                summary.addEventListener("click", function () {
+                    if (count % 2 == 0) {
+                        i.style.transform = 'rotate(45deg)';
+                    }
+                    else {
+                        i.style.transform = 'rotate(220deg)';
+                    }
+                    count++
+                })
+
+                let detailsData = document.createTextNode("CARE INSTRUCTION  ")
+                summary.appendChild(detailsData)
+                summary.appendChild(i)
+
+                let x = element.care_instructions.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    txt2.fontFamily="Manrope"
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+                details.appendChild(summary)
+
+
+
+            }
+            if (element.model_fit) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+
+                let i = document.createElement("i")
+                i.setAttribute("class", "arrow right")
+                let count = 0;
+                summary.addEventListener("click", function () {
+                    if (count % 2 == 0) {
+                        i.style.transform = 'rotate(45deg)';
+                    }
+                    else {
+                        i.style.transform = 'rotate(220deg)';
+                    }
+                    count++
+                })
+                let detailsData = document.createTextNode("MODEL FIT  ")
+                summary.appendChild(detailsData)
+                summary.appendChild(i)
+
+                let x = element.model_fit.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    txt2.fontFamily="Manrope"
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+
+                details.appendChild(summary)
+
+            }
+            if (element.return_time_limit) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+                let i = document.createElement("i")
+                i.setAttribute("class", "arrow right")
+                let count = 0;
+                summary.addEventListener("click", function () {
+                    if (count % 2 == 0) {
+                        i.style.transform = 'rotate(45deg)';
+                    }
+                    else {
+                        i.style.transform = 'rotate(220deg)';
+                    }
+                    count++
+                })
+
+                let detailsData = document.createTextNode("RETURN TIME LIMIT  ")
+                summary.appendChild(detailsData)
+                summary.appendChild(i)
+
+                let x = element.return_time_limit.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    txt2.fontFamily="Manrope"
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+
+                details.appendChild(summary)
+
+
+            }
+            if (element.other_details) {
+
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+                let i = document.createElement("i")
+                i.setAttribute("class", "arrow right")
+                let count = 0;
+                summary.addEventListener("click", function () {
+                    if (count % 2 == 0) {
+                        i.style.transform = 'rotate(45deg)';
+                    }
+                    else {
+                        i.style.transform = 'rotate(220deg)';
+                    }
+                    count++
+                })
+
+                let detailsData = document.createTextNode("OTHER DETAILS  ")
+                summary.appendChild(detailsData)
+                summary.appendChild(i)
+
+                let x = element.other_details.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    txt2.fontFamily="Manrope"
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+
+                details.appendChild(summary)
+
+
+            }
+            if (element.material) {
+                let details = document.createElement("details")
+                divSum.appendChild(details)
+
+                let summary = document.createElement("summary")
+                let i = document.createElement("i")
+                i.setAttribute("class", "arrow right")
+                let count = 0;
+                summary.addEventListener("click", function () {
+                    if (count % 2 == 0) {
+                        i.style.transform = 'rotate(45deg)';
+                    }
+                    else {
+                        i.style.transform = 'rotate(220deg)';
+                    }
+                    count++
+                })
+
+                let detailsData = document.createTextNode("MATERIAL  ")
+                summary.appendChild(detailsData)
+                summary.appendChild(i)
+
+                let x = element.material.split(". ")
+                console.log(x)
+                x.forEach((el) => {
+                    let pElmnt = document.createElement("li");
+                    let txt2 = document.createTextNode(`${el}.`);
+                    txt2.fontFamily="Manrope"
+                    pElmnt.appendChild(txt2);
+                    details.appendChild(pElmnt)
+
+                })
+
+
+                details.appendChild(summary)
+
+            }
+
+
+            div.append(heading, price, p, color, imageDiv, sizeChart, btn, expectedDelivery, pinCode, checkDeliver, addToCart)
+            rightAppend.append(div, divSum)
+        });
+
+    }
+
+
+
+
+    let widthImages = document.getElementById("width-images")
+    let slideshowContainer = document.getElementById("slideshow-container")
+    let length = data[0].image.gallery
+    var slideIndex = 1;
+    slideShow(length)
+    showSlides(slideIndex);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+    function slideShow(data) {
+        slideshowContainer.innerHTML = ""
+        data.forEach((element) => {
+            let div = document.createElement("div")
+            div.setAttribute("class", "mySlides fade")
+            let img = document.createElement("img")
+            img.src = element
+            div.append(img)
+            slideshowContainer.append(div)
+        });
+    }
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        // dots[slideIndex-1].className += " active";
+    }
+    window.onload = function () {
+        setInterval(function () {
+            plusSlides(1);
+        }, 2000);
+    }
+
+
+
+    function Duplicate(product) {
+        for (let i = 0; i < lsData.length; i++) {
+            if (lsData[i].id == product.id) {
+                return true
+            }
+        }
+        return false
+    }
+    
+</script>
+
+</html>
