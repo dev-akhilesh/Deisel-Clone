@@ -3,6 +3,7 @@
 * {
     padding: 0px;
     margin: 0px;
+    /* border: 1px solid black; */
 }
 
 body {
@@ -14,19 +15,19 @@ body {
 #sieve {
     display: flex;
     justify-content: space-between;
+    padding: 2em 0em;
+    margin-bottom: 2em;
+    background-color: rgb(247, 247, 247);
 }
 
 #sieve #filters {
     display: flex;
 }
 
-#sieve #sort details {
-    width: 150px;
-}
-
 #sieve details {
     position: relative;
     border: 2px solid black;
+    background-color: #fff;
 }
 
 #sieve #filters details {
@@ -44,15 +45,28 @@ body {
     font-size: 1rem;
 }
 
-#sieve details .option-container {
+#sieve #filters details .option-container {
     position: absolute;
     transform: translateX(-0.9%);
     width: 100%;
     background-color: white;
     display: grid;
     grid-template-columns: repeat(auto-fit, 100px);
+    column-gap: 1em;
     justify-content: center;
     border: 2px solid black;
+}
+
+#sieve #sort details {
+    width: 200px;
+}
+
+#sieve #sort details .option-container {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border: 2px solid black;
+    transform: translateX(-0.9%);
 }
 
 #sieve details .filter-option,
@@ -62,7 +76,7 @@ body {
 }
 
 #sieve details .sort-option {
-    padding-left: 0em;
+    padding-left: 1em;
 }
 
 #sieve details .filter-option span,
@@ -125,11 +139,6 @@ body {
     border: none;
     border-radius: 5px;
 }
-
-/* #list .product-card .quick-view:hover {
-    background-color: #e45b35;
-    transition-duration: 350ms;
-} */
 
 #list .product-card img {
     width: 100%;
@@ -344,6 +353,34 @@ body {
     }
 }
 
+#before-modal-loader {
+    backdrop-filter: blur(30px);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#before-modal-loader #loading {
+    margin: auto;
+}
+
+#go-to-top {
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    border: none;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
 .hide {
     display: none;
 }
@@ -352,7 +389,15 @@ body {
     display: block;
 }
 
+.show-before-modal-loading {
+    display: flex;
+}
+
 .show-modal {
+    display: flex;
+}
+
+.show-go-to-top-button {
     display: flex;
 }
 
