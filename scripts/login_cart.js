@@ -1,5 +1,4 @@
-// console.log("gna")
-
+// Fetching the nav and footer
 window.addEventListener("load", async () => {
   try {
     // Getting the nav bar
@@ -16,112 +15,87 @@ window.addEventListener("load", async () => {
   }
 });
 
-let data = JSON.parse(localStorage.getItem("cart"));
+
 let totoalbill = document.querySelector("#total_bill")
-console.log(data)
 let cart = document.querySelector("#cart")
 let x = 1;
-function show() {
-  data.map((function (el) {
 
-    console.log(el.image.gallery[0])
-
-
-
-    let div = document.createElement("div");
-    div.id = "cartdiv"
-    let div1 = document.createElement('div');
-    // prodiv.id="prodivimg"
-    let div2 = document.createElement("div");
-    let div3 = document.createElement('div');
-
-    let name = document.createElement("h3")
-    name.innerText = "Name:-" + el.name;
-    let color = document.createElement("h4");
-    color.innerText = "Color:-" + el.color;
-    // let size=el.size;
-    let fit = document.createElement("h4")
-    fit.innerText = "Fit:-" + el.fit
-    let img = document.createElement("img")
-    img.src = el.image.gallery[0]
-    img.id = "img"
-    let price = document.createElement("h2");
-    price.innerText = "price:-" + el.price
-
-
-    totoalbill.innerText = "Total Price:-" + el.price
-
-
-    let btn1 = document.createElement("div");
-    btn1.innerText = "-"
-
-
-
-    let p = document.createElement("p")
-    p.innerText = 1;
-    p.className = "button"
-    let btn2 = document.createElement("div");
-    btn2.innerText = "+"
-    let button = document.createElement("button")
-    button.innerText = "Delete"
-    button.className = "button"
-    let id = el.id
-    button.addEventListener('click', function (e) {
-
-      let item = JSON.parse(localStorage.getItem("cart"))
-      const filtered = items.filter(item => item.id !== id);
-
-      localStorage.setItem('cart', JSON.stringify(filtered));
-      show()
-    })
-
-
-    let price1 = +el.price
-    totoalbill.innerHTML = price1
-    btn1.addEventListener("click", function (e) {
-      e.preventDefault()
-
-
-      if (x > 1) {
-        // totoalbill="TotalBill"+price1
-        x--
-        // totoalbill.innerText=price1-(+el.price)
-        console.log(price1, el.price)
-        totoalbill.innerText = "Total price:-" + (price1 - (el.price * x))
-        p.innerText = x
-
-      }
-
-
-      // console.log(typeof totoalbill)
-      // console.log("ganaa")
-    })
-
-    btn2.addEventListener("click", function (e) {
-      e.preventDefault()
-
-      if (x <= 3) {
-        x++
-        // totoalbill.innerText=((+price1)+(+el.price))
-        totoalbill.innerText = "Total price:-" + (+price1 + (+el.price * x))
-        // totoalbill.innerText=totoalbill-(+el.price)
-        // totoalbill=totoalbill+el.price
-        p.innerText = x
-      } else {
-        alert("maximum limit over")
-      }
-
-      // console.log("ganaa")
-    })
-
-    div3.append(btn1, p, btn2, button)
-    div1.append(img)
-    div2.append(name, color, fit, color, price)
-    // prodiv.append(name,color,price)
-    div.append(div1, div2, div3)
-    cart.append(div)
-  }))
+function createCard(product) {
+  return `
+    <div id="cartdiv">
+      <div id="prodivimg">
+        <h3>${"Name: " + product.name}</h3>
+        <h4>${"Color: " + product.color}</h4>
+        <h4>${"Fit: " + product.model_fit}</h4>
+        <img id="img" src="${product.image}" alt="">
+        <h2>${"Price: ₹" + product.price}</h2>
+        <button class="decrease" data-id="${product.id}">-</button>
+        <p class="quantity">${product.quantity}</p>
+        <button class="increase" data-id="${product.id}">+</button>
+        <button class="button delete-button" data-id="${product.id}">Delete</button>
+        
+      </div>
+    </div>
+  `
 }
 
+// Creating DOM elements from the data in local storage 
+function show() {
 
+  let totalBill = 0;
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  document.querySelector("#cart").innerHTML = cart.map(item => {
+    totalBill += item.price * item.quantity;
+    return createCard(item)
+  }).join("")
+
+  document.querySelector("#total_bill").innerHTML = `Total Bill: ₹${totalBill}`;
+}
 show()
+
+// Activiting the plus button
+document.querySelector("#cart").addEventListener("click", function (event) {
+  if (!event.target.classList.contains("increase")) return;
+
+  let items = JSON.parse(localStorage.getItem("cart"))
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].id == event.target.dataset.id) {
+      items[i].quantity++
+      break;
+    }
+  }
+
+  localStorage.setItem("cart", JSON.stringify(items))
+  show();
+})
+
+// Activiting the minus button
+document.querySelector("#cart").addEventListener("click", function (event) {
+  if (!event.target.classList.contains("decrease")) return;
+
+  let items = JSON.parse(localStorage.getItem("cart"))
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].id == event.target.dataset.id) {
+      items[i].quantity--
+
+      if (items[i].quantity <= 0)
+        items[i].quantity++;
+
+      break;
+    }
+  }
+
+  localStorage.setItem("cart", JSON.stringify(items))
+  show();
+})
+
+// Adding delete function
+document.querySelector("#cart").addEventListener('click', function (event) {
+  if (!event.target.classList.contains('delete-button')) return;
+
+  let items = JSON.parse(localStorage.getItem("cart"))
+  const filtered = items.filter(item => item.id != event.target.dataset.id);
+
+  localStorage.setItem('cart', JSON.stringify(filtered));
+  show();
+})

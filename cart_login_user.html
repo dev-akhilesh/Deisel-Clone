@@ -155,30 +155,9 @@
 
 </body>
 
-<script>
-
-  const Offers = document.getElementById("offers");
-
-  let isAlternate = false;
-
-  setInterval(() => {
-    if (isAlternate) {
-      Offers.innerHTML = "ADDITIONLA 10% OFF ON MINIMUM ORDER VALUE OF 18000 USE CODE EXTRA:10"
-    } else {
-      Offers.innerHTML = "TRACK YOU ORDERS & RETURNS HERE"
-    }
-    isAlternate = !isAlternate;
-  }, 2000);
-
-// fetch("./footer.html")
-// .then(footer=>{
-//    return footer.text() 
-// })
-// .then(footer=>{
-//    document.querySelector("footer").innerHTML=footer
-// })
-
-</script>
 <script src="./scripts/login_cart.js"></script>
+
+<script src="./external/scripts/nav.js" type="module"></script>
+<script src="https://kit.fontawesome.com/440cd89283.js" crossorigin="anonymous"></script>
 
 </html>

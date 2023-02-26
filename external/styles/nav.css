@@ -25,6 +25,14 @@
 
 }
 
+.NavContainer a {
+   text-decoration: none;
+}
+
+.NavContainer a h1 {
+   color: black;
+}
+
 #links {
    width: 40%;
    display: flex;
