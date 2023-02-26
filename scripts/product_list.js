@@ -225,10 +225,10 @@ window.addEventListener("load", async () => {
         let products = await _fetch(PRODUCT_URL);
         products = await products.json();
 
-    //    console.log(products)
+        //    console.log(products)
         displayFilters(products);
         displayProducts(products);
-=======
+
         // Getting the query parameters after the first page load and storing for future fetching operations
         queryString = new URLSearchParams(window.location.search).toString();
 
