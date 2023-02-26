@@ -23,17 +23,20 @@ let x = 1;
 function createCard(product) {
   return `
     <div id="cartdiv">
-      <div id="prodivimg">
+      <div class="prodivimg">
+      <div class="info">
         <h3>${"Name: " + product.name}</h3>
         <h4>${"Color: " + product.color}</h4>
         <h4>${"Fit: " + product.model_fit}</h4>
-        <img id="img" src="${product.image}" alt="">
         <h2>${"Price: ₹" + product.price}</h2>
+      </div>
+        <img id="img" src="${product.image}" alt="">
+      <div class = "buttons">
         <button class="decrease" data-id="${product.id}">-</button>
         <p class="quantity">${product.quantity}</p>
         <button class="increase" data-id="${product.id}">+</button>
-        <button class="button delete-button" data-id="${product.id}">Delete</button>
-        
+        <button class="delete-button" data-id="${product.id}">Delete</button>
+      </div> 
       </div>
     </div>
   `

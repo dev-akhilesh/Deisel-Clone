@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap');
+*{
+   font-family: poppins;
+}
+
 .container{
     width:100%;
    display:flex;
@@ -84,14 +89,16 @@
 
  .footerbox{
     display:flex;
-
     padding-top: 30px;
     width:100%;
-    height:400px;
+    /* height:400px; */
     margin:auto;
     justify-content: space-between;
  }
-
+#store{
+   text-decoration: none;
+   color: black;
+}
  details > a > p{
     color:black;
    

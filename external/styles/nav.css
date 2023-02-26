@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap');
 #nav {
    width: 100%;
    height: 40px;
@@ -6,6 +7,7 @@
    color: white;
    align-items: center;
    justify-content: center;
+   font-family: manrope;
 }
 
 #offers {
@@ -22,7 +24,7 @@
    justify-content: space-between;
    align-items: center;
    margin: auto;
-
+   font-family: manrope;
 }
 
 .NavContainer a {
@@ -32,7 +34,9 @@
 .NavContainer a h1 {
    color: black;
 }
-
+.fa-solid{
+   color: black;
+}
 #links {
    width: 40%;
    display: flex;
@@ -41,23 +45,22 @@
 
 }
 
-#Diesel {
+#Diesel{
    padding-right: 250px;
-
 }
 
 #functional {
-   width: 15%;
-
+   width: 300px;
    display: flex;
-   justify-content: space-evenly;
+   justify-content: space-between;
    font-size: larger;
-
+   /* border: 2px solid red; */
 }
-
-
 
 #links a {
    color: black;
    text-decoration: none;
+}
+#functional input{
+   padding: 0.2em 0.5em;
 }

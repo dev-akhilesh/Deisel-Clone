@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap');
+
+#heading{
+  text-align: center;
+  font-family: Poppins;
+  font-size: 40px;
+}
+#mid{
+  display: flex;
+}
+#cart{
+  /* width: 45%; */
+  /* border: 2px solid red; */
+  flex: 2;
+  margin-right:20px ;
+  overflow-y: scroll;
+  height: 800px;
+  margin-bottom: 20px;
+}
+#discount{
+  /* width: 50%; */
+  /* border: 2px solid red; */
+  flex: 1;
+  font-family: poppins;
+
+}
+.prodivimg {
+  display: flex;
+  width: 100%!important;
+  justify-content: space-around;  
+  background-color: whitesmoke;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  margin: 10px 0px;
+  height: 300px;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+
+.prodivimg img{
+    width: 250px;
+    object-fit: fill;
+}
+
+.increase{
+  height: 30px;
+  margin: 0px;
+  margin: auto 0px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.increase:hover{
+  transform: scale(1.1);
+}
+.decrease{
+  height: 30px;
+  margin: auto 0px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.decrease:hover{
+  transform: scale(1.1);
+}
+.delete-button{
+  height: 30px;
+  margin: auto 0px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.delete-button:hover{
+  transform: scale(1.1);
+}
+.buttons{
+  display: flex;
+  width: 130px;
+  justify-content: space-between;
+  /* border: 2px solid blue; */
+  border-radius: 10px;
+  border: 2px;
+}
+
+.quantity{
+  margin: auto 0px;
+  font-size: 20px;
+  font-family: Manrope;
+}
+
+.info{
+  display: flex;
+  /* justify-content: space-around; */
+  flex-direction: column;
+  font-family: poppins;
+}
+.info h3{
+  font-family: manrope;
+}
+#total_bill{
+  font-family: manrope;
+}
+#total_bill+p{
+  /* color: red; */
+  font-family: poppins;
+}
+#checkoutform{
+
+}

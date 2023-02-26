@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./external/styles/nav.css">
-    <link rel="stylesheet" href="./external/styles/footer.css">
+    <link rel="stylesheet" href="./external/styles/nav.css" />
+    <link rel="stylesheet" href="./external/styles/footer.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap");
 
@@ -88,6 +88,8 @@
         height: 580px;
         width: 100%;
         cursor: pointer;
+        object-fit: cover;
+        object-position: 0% 0%;
       }
       #main {
         display: flex;
@@ -371,7 +373,7 @@
         html[1] = await html[1].text();
 
         document.querySelector("nav").innerHTML = html[0];
-        document.querySelector("footer").innerHTML = html[1];   
+        document.querySelector("footer").innerHTML = html[1];
       } catch (error) {
         console.error(error);
       }
@@ -396,5 +398,8 @@
       setTimeout(carousel, 2000); // Change image every 2 seconds
     }
   </script>
-  <script src="https://kit.fontawesome.com/440cd89283.js" crossorigin="anonymous"></script>
+  <script
+    src="https://kit.fontawesome.com/440cd89283.js"
+    crossorigin="anonymous"
+  ></script>
 </html>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap');
 #DiscoverMen{
     position:absolute;
      top:10; 
@@ -14,17 +15,36 @@
      text-align: center;
      box-sizing: border-box;
      padding-top: 5px;
+     font-family: poppins;
 }
+.discover{
+  font-family: poppins;
 
+}
  #anchor {
     display:flex;
     width:100%;
     justify-content: center;
     height:100%;
     align-items: center;
-
+    margin-bottom: 40px;
 } 
+#abc{
+  font-family: poppins;
+}
+.abcd h1{
+  font-family: poppins;
+}
+.slide p{
+  font-family: Manrope;
+}
+.slide h3{
+  font-family: poppins;
+}
+.slide2{
+  font-family: poppins;
 
+}
 #DiscoverWomen{
      position:absolute; 
      margin-left: 150px; 

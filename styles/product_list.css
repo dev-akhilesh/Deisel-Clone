@@ -13,7 +13,8 @@ body {
 #sieve {
     font-family: 'Manrope', sans-serif;
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: space-around;
     padding: 2em 0em;
     margin-bottom: 2em;
     background-color: rgb(247, 247, 247);
@@ -21,6 +22,7 @@ body {
 
 #sieve #filters {
     display: flex;
+    width: fit-content;
 }
 
 
@@ -32,7 +34,7 @@ body {
 
 #sieve #filters details {
     margin-right: 1em;
-    width: 250px;
+    width: 30%;
 }
 
 #sieve #filters details:last-child {
@@ -58,7 +60,8 @@ body {
 }
 
 #sieve #sort details {
-    width: 200px;
+    width: 100%;
+    padding: 1em 0em;
 }
 
 #sieve #sort details .option-container {
