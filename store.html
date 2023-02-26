@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./external/styles/nav.css">
+    <link rel="stylesheet" href="./external/styles/footer.css">
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap");
 
@@ -54,7 +56,11 @@
       }
       .schedule_btn {
         background-color: #0083ca;
-        background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgb(255, 197, 61) 0%,
+          rgb(255, 94, 7) 90%
+        );
         transition: transform 0.1s;
         color: white;
         padding: 10px;
@@ -98,6 +104,7 @@
     </style>
   </head>
   <body>
+    <nav></nav>
     <div>
       <a href="product_list.html">
         <img
@@ -349,16 +356,28 @@
         ></iframe>
       </div>
     </div>
+    <footer></footer>
   </body>
 
-  <!-- Do not touch this code !!!!!!!!!! -->
   <script>
-    let Display_name = document.getElementById("LName");
-    let userDname = JSON.parse(localStorage.getItem("display-name"));
-    Display_name.textContent = userDname;
+    window.addEventListener("load", async () => {
+      try {
+        // Getting the nav bar
+        let html = await Promise.all([
+          fetch("../external/nav.html"),
+          fetch("../external/footer.html"),
+        ]);
+        html[0] = await html[0].text();
+        html[1] = await html[1].text();
+
+        document.querySelector("nav").innerHTML = html[0];
+        document.querySelector("footer").innerHTML = html[1];   
+      } catch (error) {
+        console.error(error);
+      }
+    });
   </script>
   <!-- Do not touch this code !!!!!!!!!! -->
-
   <script>
     var slideIndex = 0;
     carousel();
@@ -377,37 +396,5 @@
       setTimeout(carousel, 2000); // Change image every 2 seconds
     }
   </script>
-
-  <script>
-    let searchBar = document.getElementById("searchBar");
-    let searchBtn = document.getElementById("searchBtn");
-
-    searchBtn.addEventListener("click", () => {
-      if (searchBar.value == "mobile") {
-        window.location.href = "mobile.html";
-      } else if (searchBar.value == "furniture") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "Furniture") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "Furnitures") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "furnitures") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "sofa set") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "Sofa set") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "sofa sets") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "Sofa sets") {
-        window.location.href = "furniture.html";
-      } else if (searchBar.value == "Mobiles") {
-        window.location.href = "mobile.html";
-      } else if (searchBar.value == "mobiles") {
-        window.location.href = "mobile.html";
-      } else {
-        window.location.href = "none.html";
-      }
-    });
-  </script>
+  <script src="https://kit.fontawesome.com/440cd89283.js" crossorigin="anonymous"></script>
 </html>
