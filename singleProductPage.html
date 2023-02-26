@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap");
+
         * {
             margin: 0;
             padding: 0;
@@ -130,8 +131,9 @@
             margin-top: 10px;
             margin-bottom: 10px;
         }
+
         .right-text div .btn:focus {
-           background-color: blue;
+            background-color: blue;
         }
 
         .right-text div .pinCode {
@@ -240,7 +242,7 @@
             margin-right: 10px;
             display: flex;
             align-items: center;
-           
+
             width: 25%;
         }
 
@@ -270,7 +272,7 @@
             margin-bottom: 20px;
 
         }
-        
+
 
         .left-footer>div>div>.button button {
             width: 100%;
@@ -337,7 +339,7 @@
             justify-content: space-around;
         }
 
-        
+
 
         summary {
             list-style: none;
@@ -453,49 +455,56 @@
             --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         }
-        .anotherWindow{
+
+        .anotherWindow {
             display: none;
             position: absolute;
             /* height: 200px; */
         }
-        .hideImages{
-                display: none;
-            }
-            .showImages{
-                height: 200px;
-                width: 200px ;
-                background-color: black;
-            }
-            .insideAnotherWindow{
-                width: 100%;
-                margin: auto;
-            }
-            .insideAnotherWindow div {
-                width: 100%;
-                margin-top: 10px;
-                /* border: 5px solid rgb(109, 33, 33); */
 
-            }
-            .insideAnotherWindow div img{
-                width: 100%;
-                /* border: 5px solid rgb(5, 59, 21); */
-            }
-            /* .insideAnotherWindow div button{ */
-                /* width: 100%;
+        .hideImages {
+            display: none;
+        }
+
+        .showImages {
+            height: 200px;
+            width: 200px;
+            background-color: black;
+        }
+
+        .insideAnotherWindow {
+            width: 100%;
+            margin: auto;
+        }
+
+        .insideAnotherWindow div {
+            width: 100%;
+            margin-top: 10px;
+            /* border: 5px solid rgb(109, 33, 33); */
+
+        }
+
+        .insideAnotherWindow div img {
+            width: 100%;
+            /* border: 5px solid rgb(5, 59, 21); */
+        }
+
+        /* .insideAnotherWindow div button{ */
+        /* width: 100%;
                 height: 30px;
                 background-color: black; */
-                /* font-size:50px ; */
-                
-                /* color: black; */
-            /* } */
-            #closeButton{
-                position: fixed;
-                background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
-                height: 50px;
-                width: 100px;
-                right: 20px;
-            }
-        
+        /* font-size:50px ; */
+
+        /* color: black; */
+        /* } */
+        #closeButton {
+            position: fixed;
+            background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+            height: 50px;
+            width: 100px;
+            right: 20px;
+        }
+
 
         @media screen and (max-width:1000px) {
             .width-images {
@@ -522,7 +531,7 @@
 
             .right-text>div .check {
                 width: 30%;
-                
+
             }
 
             .youMayLike {
@@ -561,11 +570,13 @@
                 border: 1px solid black;
                 /* margin: auto; */
             }
-            details li{
+
+            details li {
                 font-family: Manrope;
             }
-            details{
-                
+
+            details {
+
                 font-weight: 900;
             }
 
@@ -580,10 +591,10 @@
                 /* height: 500px; */
             }
 
-            .showImages{
+            .showImages {
                 display: block;
             }
-            
+
             .dot {
                 cursor: pointer;
                 height: 15px;
@@ -608,101 +619,101 @@
         <nav></nav>
     </header>
     <div class="anotherWindow hideImages" id="anotherWindow">
-        <div id="insideAnotherWindow"  class="insideAnotherWindow">
+        <div id="insideAnotherWindow" class="insideAnotherWindow">
             <button id="closeButton">CLOSE</button>
 
         </div>
     </div>
-        <div class="main-body">
-            <div class="left-image" id="left-image">
-                <div class="images" id="images"></div>
-                <div class="width-images" id="width-images">
-                    <div class="slideshow-container" id="slideshow-container">
+    <div class="main-body">
+        <div class="left-image" id="left-image">
+            <div class="images" id="images"></div>
+            <div class="width-images" id="width-images">
+                <div class="slideshow-container" id="slideshow-container">
 
 
 
-                    </div>
-                    <br>
-                    <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                        <span class="dot" onclick="currentSlide(5)"></span>
-                        <span class="dot" onclick="currentSlide(6)"></span>
-                    </div>
-
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
                 </div>
 
             </div>
-            <div class="right-text" id="right-text">
-                <div class="summary" id="summary"></div>
+
+        </div>
+        <div class="right-text" id="right-text">
+            <div class="summary" id="summary"></div>
+        </div>
+    </div>
+
+    <div class="youMayLike">
+        <h1>YOU MAY ALSO LIKE</h2>
+    </div>
+    <div class="moreImage" id="moreImage">
+
+
+
+    </div>
+    <div class="upperFooter">
+        <div class="left-footer">
+            <div>
+                <div>
+                    <h5>Sign up to never miss an update.</h5>
+                    <div>
+
+
+                        <input type="email" placeholder="Enter Your Email address*" required id="inpEmail">
+
+                    </div>
+                    <div class="gender">
+                        <div class="male">
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <label for="male">Men</label>
+                        </div>
+                        <div class="female">
+                            <input type="radio" id="female" name="gender" value="female" required>
+                            <label for="female">Woman</label>
+                        </div>
+
+                    </div>
+                    <div class="email">
+                        <p id="required"></p>
+                    </div>
+                    <div class="text">
+                        <p>By clicking Sign up you have read and agreed to our <a href="">privacy policy</a></p>
+                    </div>
+                    <div class="button">
+                        <button id="signUp">Sign Up</button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="youMayLike">
-            <h1>YOU MAY ALSO LIKE</h2>
-        </div>
-        <div class="moreImage" id="moreImage">
-
-
-
-        </div>
-        <div class="upperFooter">
-            <div class="left-footer">
+        <div class="right-footer">
+            <div>
                 <div>
-                    <div>
-                        <h5>Sign up to never miss an update.</h5>
+                    <h4>Connect with us on social media</h4>
+                    <div class="footer-images">
                         <div>
 
-                            
-                            <input type="email" placeholder="Enter Your Email address*" required id="inpEmail">
-
+                            <a class="fa fa-instagram" style="font-size:36px" class="logo" href=""><img src=""
+                                    alt=""></a>
                         </div>
-                        <div class="gender">
-                            <div class="male">
-                                <input type="radio" id="male" name="gender" value="male" required>
-                                <label for="male">Men</label>
-                            </div>
-                            <div class="female">
-                                <input type="radio" id="female" name="gender" value="female" required>
-                                <label for="female">Woman</label>
-                            </div>
-
+                        <div>
+                            <a class="fa fa-facebook-f" style="font-size:36px" href="" class="logo"></a>
                         </div>
-                        <div class="email">
-                            <p id="required"></p>
-                        </div>
-                        <div class="text">
-                            <p>By clicking Sign up you have read and agreed to our <a href="">privacy policy</a></p>
-                        </div>
-                        <div class="button">
-                            <button id="signUp">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="right-footer">
-                <div>
-                    <div>
-                        <h4>Connect with us on social media</h4>
-                        <div class="footer-images">
-                            <div>
-
-                                <a class="fa fa-instagram" style="font-size:36px" class="logo" href=""><img src=""
-                                        alt=""></a>
-                            </div>
-                            <div>
-                                <a class="fa fa-facebook-f" style="font-size:36px" href="" class="logo"></a>
-                            </div>
-                            <div>
-                                <a href=""><i class="fa fa-youtube-play" style="font-size:36px" class="logo"></i></a>
-                            </div>
+                        <div>
+                            <a href=""><i class="fa fa-youtube-play" style="font-size:36px" class="logo"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <footer>
 
     </footer>
@@ -710,26 +721,83 @@
 
 
 </body>
-<script>
-    // fetch("./footer.html")
-    // .then((res)=>{
-    //     return res.text()
-        
-       
-    // })
-    // .then((footer)=>
-    // {
-    //     // console.log(footer)
-    //     document.querySelector("footer").innerHTML=footer
-    // })
-    // import{_fetch}from ""
-    // lowerImage.innerText="hey"
-    //     fetch('http://144.24.137.155:3000/products')
-    //   .then((response) => response.json())
-    //   .then((data) => console.log(data));
+<script type="module">
+   
+    let length = []
+    let imageData1 = []
+    let arr = []
+    let productServer = "http://localhost:3000/products"
+    import { _fetch } from "./external/scripts/api.js"
+    let id = (new URLSearchParams(window.location.search).get("id"))
+
+    _fetch(`${productServer}?id=${id}`)
+        .then((res) => {
+            console.log(res)
+            return res.json()
+        })
+        .then((result) => {
+
+            display(result)
+            DisplayImage(result[0].gallery)
+            length = result[0].gallery
+            imageData1 = result[0].gallery
+            length.forEach((el) => {
+                arr.push(el.image)
+
+            })
+            let widthImages = document.getElementById("width-images")
+            let slideshowContainer = document.getElementById("slideshow-container")
+
+            var slideIndex = 1;
+            slideShow(arr)
+            showSlides(slideIndex);
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+                // showSlides(3);
+
+                
+            }
+            function slideShow(data) {
+                slideshowContainer.innerHTML = ""
+                data.forEach((element) => {
+                    let div = document.createElement("div")
+                    div.setAttribute("class", "mySlides fade")
+                    let img = document.createElement("img")
+                    img.src = element
+                    div.append(img)
+                    slideshowContainer.append(div)
+                });
+            }
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                // dots[slideIndex-1].className += " active";
+            }
+            window.onload = function () {
+                setInterval(function () {
+                    plusSlides(1);
+                }, 2000);
+            }
+
+        })
+    // console.log(arr)
+
     let additional = document.getElementById("summary")
     let data = [{ "name": "P-Eder Slim Fit Women Pink Pants", "price": "34999", "color": "Pink", "stock_status": "out-of-stock", "description": "Part of the SS22 Fashion Show capsule, these trousers are cut from blended viscose satin. Garment-dyed for a faded look just like the original '90s Hush pants, they're finished with a double button closure and front utility-style pockets.", "care_instructions": "Machine wash at 105 °F, Do not bleach, Low iron, Do not dry clean, Do not tumble dry, Dry flat in the shade", "model_fit": "Model is wearing a size 27 and is 177 cm / 5'9\"", "return_time_limit": "Easy 30 Days Return", "material": "52%Cotton 43%Viscose-Rayon 5%Elastane-Spandex", "occasion": "Casual wear", "pattern": "Solid", "fit": "Slim Fit", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 N", "country_of_origin": "Italy", "name_of_commodity": "Pants", "style_code": "A05471 0HYZE35A", "discount": "0", "brand": "Diesel", "created_at": "2022-03-04 18:29:35", "image": { "main": "https://diesel.gumlet.io/product/410315409006/300/410315409006_1_9079.webp", "gallery": ["https://diesel.gumlet.io/product/410315409006/665/410315409006_1_7654.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_2_2288.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_3_7236.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_4_4961.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_5_3154.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_6_3079.webp"] }, "size": ["XS", "XL", "XS", "M"], "id": 0 }]
-    // console.log(data.image)
+
 
 
 
@@ -745,31 +813,29 @@
     let rightAppend = document.getElementById("right-text")
     let anotherWindow = document.getElementById("anotherWindow")
     let lowerImage = document.getElementById("moreImage")
-    let insideAnotherWindow=document.getElementById("insideAnotherWindow")
-    let signUp=document.getElementById("signUp")
-    let closeButton=document.getElementById("closeButton")
-    let inpEmail=document.getElementById("inpEmail")
-    let required=document.getElementById("required")
+    let insideAnotherWindow = document.getElementById("insideAnotherWindow")
+    let signUp = document.getElementById("signUp")
+    let closeButton = document.getElementById("closeButton")
+    let inpEmail = document.getElementById("inpEmail")
+    let required = document.getElementById("required")
 
     // console.log(window.location.href)
-    DisplayImage(data[0].image.gallery)
-    display(data)
+
+
     DisplayLowerImage(lowerImageData)
-    signUp.addEventListener("click",function()
-    {
-        if(inpEmail.value!="")
-        {
-            required.innerText=""
+    signUp.addEventListener("click", function () {
+        if (inpEmail.value != "") {
+            required.innerText = ""
 
             alert("Email Added To Our Newsletter Successfully")
 
         }
-        else{
-            required.style.color="RED"
-            required.innerText="REQUIRED"
+        else {
+            required.style.color = "RED"
+            required.innerText = "REQUIRED"
         }
     })
-
+    // DisplayImage(data[0].image.gallery)
     function DisplayImage(data) {
         leftImage.innerHTML = ""
         data.forEach((element, index) => {
@@ -777,43 +843,45 @@
             div.setAttribute("class", "left-side-images")
             let img = document.createElement("img")
 
-            img.src = element
-            
+            img.src = element.image
+            let imageDiv = document.createElement("div")
+
+            let insideImage = document.createElement("img")
+            insideImage.src = element.image;
+            imageDiv.append(insideImage)
+            insideAnotherWindow.append(imageDiv)
+
             img.addEventListener("click", function () {
-                imageData.forEach((el)=>
-                {
-                    
-                   
-                    let imageDiv=document.createElement("div")
+                // imageData1.forEach((el)=>
+                // {
 
-                    let insideImage=document.createElement("img")
-                    insideImage.src=el;
-                    imageDiv.append(insideImage)
-                    insideAnotherWindow.append(imageDiv)
 
-                })
-                    
-                    anotherWindow.style.display="block"
-                
+
+
+                // })
+
+                anotherWindow.style.display = "block"
+
             })
 
             div.append(img)
             leftImage.append(div)
 
         })
-       
-                    closeButton.addEventListener("click",function()
-                    {
-                      
-                        anotherWindow.style.display="none"
-                    })
-                    
+
+        closeButton.addEventListener("click", function () {
+
+            anotherWindow.style.display = "none"
+        })
+
 
     }
-   
+
     function DisplayLowerImage(data) {
         lowerImage.innerHTML = ""
+
         data.forEach((element, i) => {
+            // console.log(element)
             let div = document.createElement('div')
 
 
@@ -866,7 +934,7 @@
             imageDiv.setAttribute("class", "imageDiv")
             let image = document.createElement("img")
             image.setAttribute("id", "image")
-            image.src = element.image.main;
+            image.src = element.gallery[0].image;
             imageDiv.append(image)
 
 
@@ -877,6 +945,7 @@
             let btn = document.createElement("div")
             btn.setAttribute("class", "btn")
             btn.setAttribute("id", "size-btn")
+            // console.log(element)
             element.size.forEach((el, i) => {
                 let button = document.createElement("button")
                 button.classList.add("button")
@@ -896,22 +965,21 @@
             ch.innerText = `CHOOSE SIZE :`
             sizeChart.append(ch, a)
             let x = null;
-            
+
             btn.addEventListener("click", function (event) {
 
                 if (event.target.tagName != "BUTTON") {
                     return
                 }
-                let buttonClick=document.querySelectorAll(".button")
-                buttonClick.forEach((el)=>
-                {
-                    el.style.backgroundColor="white"
-                    el.style.background="white"
-                    el.style.color="black"
+                let buttonClick = document.querySelectorAll(".button")
+                buttonClick.forEach((el) => {
+                    el.style.backgroundColor = "white"
+                    el.style.background = "white"
+                    el.style.color = "black"
                 })
-                event.target.style.background="radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%)";
-                event.target.style.color="white"
-                
+                event.target.style.background = "radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%)";
+                event.target.style.color = "white"
+
                 x = (event.target.innerText)
 
                 ch.innerText = `CHOOSE SIZE :  ${x}`
@@ -929,16 +997,15 @@
             let expectedDelivery = document.createElement("p")
 
             checkDeliver.addEventListener("click", function () {
-                if(pinCode.value!="")
-                {
+                if (pinCode.value != "") {
                     expectedDelivery.innerText = "Expected delivery on Fri,3 Mar- Sun,4 Mar"
                     expectedDelivery.style.color = "green"
                 }
-                else{
-                    expectedDelivery.innerText="PLEASE ENTER YOUR PINCODE"
+                else {
+                    expectedDelivery.innerText = "PLEASE ENTER YOUR PINCODE"
                     expectedDelivery.style.color = "red"
                 }
-                
+
             })
             //<-----cart---->
             let addToCart = document.createElement("button")
@@ -1001,7 +1068,7 @@
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
-                    txt2.fontFamily="Manrope"
+                    txt2.fontFamily = "Manrope"
                     pElmnt.appendChild(txt2);
                     details.appendChild(pElmnt)
                 })
@@ -1009,7 +1076,7 @@
                 details.appendChild(summary)
 
             }
-            
+
             if (element.care_instructions) {
                 let details = document.createElement("details")
                 divSum.appendChild(details)
@@ -1038,7 +1105,7 @@
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
-                    txt2.fontFamily="Manrope"
+                    txt2.fontFamily = "Manrope"
                     pElmnt.appendChild(txt2);
                     details.appendChild(pElmnt)
 
@@ -1076,7 +1143,7 @@
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
-                    txt2.fontFamily="Manrope"
+                    txt2.fontFamily = "Manrope"
                     pElmnt.appendChild(txt2);
                     details.appendChild(pElmnt)
 
@@ -1113,7 +1180,7 @@
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
-                    txt2.fontFamily="Manrope"
+                    txt2.fontFamily = "Manrope"
                     pElmnt.appendChild(txt2);
                     details.appendChild(pElmnt)
 
@@ -1152,7 +1219,7 @@
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
-                    txt2.fontFamily="Manrope"
+                    txt2.fontFamily = "Manrope"
                     pElmnt.appendChild(txt2);
                     details.appendChild(pElmnt)
 
@@ -1186,11 +1253,11 @@
                 summary.appendChild(i)
 
                 let x = element.material.split(". ")
-                console.log(x)
+                // console.log(x)
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
-                    txt2.fontFamily="Manrope"
+                    txt2.fontFamily = "Manrope"
                     pElmnt.appendChild(txt2);
                     details.appendChild(pElmnt)
 
@@ -1211,49 +1278,6 @@
 
 
 
-    let widthImages = document.getElementById("width-images")
-    let slideshowContainer = document.getElementById("slideshow-container")
-    let length = data[0].image.gallery
-    var slideIndex = 1;
-    slideShow(length)
-    showSlides(slideIndex);
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-    function slideShow(data) {
-        slideshowContainer.innerHTML = ""
-        data.forEach((element) => {
-            let div = document.createElement("div")
-            div.setAttribute("class", "mySlides fade")
-            let img = document.createElement("img")
-            img.src = element
-            div.append(img)
-            slideshowContainer.append(div)
-        });
-    }
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        // dots[slideIndex-1].className += " active";
-    }
-    window.onload = function () {
-        setInterval(function () {
-            plusSlides(1);
-        }, 2000);
-    }
 
 
 
@@ -1265,7 +1289,7 @@
         }
         return false
     }
-    
+
 </script>
 
 </html>
