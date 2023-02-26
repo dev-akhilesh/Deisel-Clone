@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./external/styles/nav.css">
+    <link rel="stylesheet" href="./external/styles/footer.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -726,7 +728,7 @@
     let length = []
     let imageData1 = []
     let arr = []
-    let productServer = "http://localhost:3000/products"
+    let productServer = "http://144.24.137.155:3000/products"
     import { _fetch } from "./external/scripts/api.js"
     let id = (new URLSearchParams(window.location.search).get("id"))
 
@@ -798,7 +800,21 @@
     let additional = document.getElementById("summary")
     let data = [{ "name": "P-Eder Slim Fit Women Pink Pants", "price": "34999", "color": "Pink", "stock_status": "out-of-stock", "description": "Part of the SS22 Fashion Show capsule, these trousers are cut from blended viscose satin. Garment-dyed for a faded look just like the original '90s Hush pants, they're finished with a double button closure and front utility-style pockets.", "care_instructions": "Machine wash at 105 °F, Do not bleach, Low iron, Do not dry clean, Do not tumble dry, Dry flat in the shade", "model_fit": "Model is wearing a size 27 and is 177 cm / 5'9\"", "return_time_limit": "Easy 30 Days Return", "material": "52%Cotton 43%Viscose-Rayon 5%Elastane-Spandex", "occasion": "Casual wear", "pattern": "Solid", "fit": "Slim Fit", "customer_support_details": "Support Number: 022- 48930102, Support Email: support@dieselindia.com", "net_qty": "1 N", "country_of_origin": "Italy", "name_of_commodity": "Pants", "style_code": "A05471 0HYZE35A", "discount": "0", "brand": "Diesel", "created_at": "2022-03-04 18:29:35", "image": { "main": "https://diesel.gumlet.io/product/410315409006/300/410315409006_1_9079.webp", "gallery": ["https://diesel.gumlet.io/product/410315409006/665/410315409006_1_7654.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_2_2288.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_3_7236.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_4_4961.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_5_3154.webp", "https://diesel.gumlet.io/product/410315409006/665/410315409006_6_3079.webp"] }, "size": ["XS", "XL", "XS", "M"], "id": 0 }]
 
-
+    window.addEventListener("load", async () => {
+      try {
+        // Getting the nav bar
+        let html = await Promise.all([
+          fetch("../external/nav.html"),
+          fetch("../external/footer.html"),
+        ]);
+        html[0] = await html[0].text();
+        html[1] = await html[1].text();
+        document.querySelector("nav").innerHTML = html[0];
+        document.querySelector("footer").innerHTML = html[1];
+      } catch (error) {
+        console.error(error);
+      }
+    });
 
 
 
@@ -1010,7 +1026,10 @@
             //<-----cart---->
             let addToCart = document.createElement("button")
             addToCart.setAttribute("class", "cart")
-            addToCart.innerText = "ADD TO CART"
+            // addToCart.innerText = "ADD TO CART"
+            let anchor=document.createElement("a")
+            anchor.innerText="ADD TO CART"
+            addToCart.append(anchor)
             addToCart.addEventListener("click", function () {
                 // console.log(pinCode.value)
                 if (pinCode.value == "") {
@@ -1029,6 +1048,7 @@
                             lsData.push({ ...element, quantity: 1 })
                             localStorage.setItem("cart", JSON.stringify(lsData))
                             alert("Product Added To Cart")
+                            anchor.href="cart_login_user.html"
                         }
                     }
                 }
@@ -1291,5 +1311,7 @@
     }
 
 </script>
+<script src="https://kit.fontawesome.com/440cd89283.js" crossorigin="anonymous"></script>
+<script src="./external/scripts/nav.js"></script>
 
 </html>
