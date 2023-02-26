@@ -22,6 +22,7 @@
     justify-content: center;
     height:100%;
     align-items: center;
+
 } 
 
 #DiscoverWomen{
@@ -128,7 +129,6 @@
   }
   .slide2{
     float: left;
-  
     position: relative;
     transition: transform 0.5s ease-in-out;
     animation: slide 5s infinite;
@@ -138,8 +138,7 @@
     height:220px;
     width:220px;
     padding-right: 15px;
-    
-    
+  
   } 
 
   @keyframes slide2 {
