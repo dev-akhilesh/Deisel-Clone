@@ -86,12 +86,12 @@ function getSieveQueryString() {
 /******************** Creating DOM Element for individual product ********************/
 function createProductElement(product) {
     return `
-        <div class="product-card redirectable">
-            <img src="${product.image}" alt="Image for product: ${product.name}" class="redirectable">
-            <div class="product-brif redirectable">
-                <p class="product-price redirectable">${"₹" + product.price}</p>
-                <p class="product-color redirectable">${product.color}</p>
-                <p class="product-name redirectable">${product.name}</p>
+        <div data-id="${product.id}" class="product-card redirectable">
+            <img data-id="${product.id}" src="${product.image}" alt="Image for product: ${product.name}" class="redirectable">
+            <div data-id="${product.id}" class="product-brif redirectable">
+                <p data-id="${product.id}" class="product-price redirectable">${"₹" + product.price}</p>
+                <p data-id="${product.id}" class="product-color redirectable">${product.color}</p>
+                <p data-id="${product.id}" class="product-name redirectable">${product.name}</p>
             </div>
             <button class="quick-view" 
                 data-gallery=${JSON.stringify(product.gallery.map(element => element.image))}
@@ -484,5 +484,5 @@ window.addEventListener("scroll", event => {
 document.querySelector("#products #list").addEventListener("click", async (event) => {
     if (!event.target.classList.contains("redirectable")) return;
 
-
+    window.location.href = `./singleProductPage.html?id=${event.target.getAttribute("data-id")}`;
 })

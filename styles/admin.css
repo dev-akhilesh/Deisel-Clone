@@ -1,0 +1,25 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+#main .tab {
+    display: flex;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.highlight-tab {
+    background-color: #ad2929;
+}
+
+.lowlight-tab {
+    background-color: white;
+}
