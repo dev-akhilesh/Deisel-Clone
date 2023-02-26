@@ -86,8 +86,23 @@ window.addEventListener("load", async event => {
     displayProducts(productsData)
 })
 
+// Adding edit product functionality
 document.querySelector("#products-info tbody").addEventListener("click", event => {
     if (!event.target.classList.contains("edit-product")) return;
 
     window.open(`./manipulate_product.html?id=${event.target.dataset.id}`)
+})
+
+// Adding view product functionality
+document.querySelector("#products-info tbody").addEventListener("click", event => {
+    if (!event.target.classList.contains("view-product")) return;
+
+    window.open(`./singleProductPage.html?id=${event.target.dataset.id}`)
+})
+
+// Adding delete product functionality
+document.querySelector("#products-info tbody").addEventListener("click", event => {
+    if (!event.target.classList.contains("delete-product")) return;
+
+    console.log(1);
 })

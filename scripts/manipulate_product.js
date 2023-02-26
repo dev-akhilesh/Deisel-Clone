@@ -23,6 +23,33 @@ function createSizes(_sizes) {
     `).join("")
 }
 
+function getFormData() {
+    let data = {}
+    document.querySelectorAll("#form form input:not(#gallery-main, #submit, .gallery-input, .size-input), #form form textarea").forEach(element => {
+        data[element.getAttribute("id")] = element.value;
+    })
+
+    data.image = document.querySelector("#gallery-main").value;
+
+    data.gallery = []
+    let i = 0;
+    document.querySelectorAll("#form .gallery-input").forEach(element => {
+        i++;
+        data.gallery.push({
+            image: element.value,
+            position: i,
+            vedio: "false"
+        })
+    })
+
+    data.size = []
+    document.querySelectorAll("#form .size-input").forEach(element => {
+        data.size.push(element.value)
+    })
+
+    return data;
+}
+
 window.addEventListener("load", async event => {
     try {
         // Adding the form
@@ -38,6 +65,8 @@ window.addEventListener("load", async event => {
             product = await product.json();
             product = product[0];
 
+            document.querySelector("#page-info").innerText = `Edit Product With ID: ${product.id}`;
+
             // Adding  product sizes to DOM
             createSizes(product.size);
 
@@ -51,6 +80,7 @@ window.addEventListener("load", async event => {
             addSingleValues(product);
         }
         else {
+            document.querySelector("#page-info").innerText = `Add A New Product`;
             document.querySelector("#gallery-other").innerHTML = "<button class=\"gallery-add\">Add</button><br>";
             document.querySelector("#size-list").innerHTML = "<button class=\"size-add\">Add</button><br>"
         }
@@ -85,7 +115,7 @@ document.querySelector("#form").addEventListener("click", function (event) {
 
     document.querySelector("#gallery-other").innerHTML += `
         <button class="delete-button gallery-delete">Delete</button>
-        <input type="text"><br>
+        <input type="text" class="gallery-input"><br>
     `
 })
 
@@ -95,6 +125,14 @@ document.querySelector("#form").addEventListener("click", function (event) {
 
     document.querySelector("#size-list").innerHTML += `
         <button class="delete-button size-delete">Delete</button>
-        <input type="text"><br>
+        <input type="text" class="size-input"><br>
     `
+})
+
+// Adding submit event to form
+document.querySelector("#form").addEventListener("submit", event => {
+    event.preventDefault();
+
+    let formData = getFormData()
+    console.log(formData);
 })
