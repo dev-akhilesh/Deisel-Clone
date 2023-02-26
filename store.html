@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600&family=Poppins&family=Quicksand&display=swap");
+
+      #heading > p {
+        font-family: montserrat;
+        font-size: 30px;
+        text-align: center;
+      }
+      body {
+        background-color: #f3f3f3;
+      }
+      #container {
+        display: flex;
+        width: 50%;
+        justify-content: center;
+        font-family: sans-serif;
+      }
+      .outerbox {
+        margin: 15px;
+        border: 2px solid #fff;
+        background-color: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      }
+      .card {
+        display: flex;
+        margin: 20px;
+        justify-content: space-between;
+      }
+      .first {
+        margin: 0px;
+        padding: 0px;
+        padding: 0px 50px 0px 0px;
+      }
+      .first h4 {
+        font-family: poppins;
+        margin: 0px;
+        padding: 0px;
+      }
+      .first p {
+        font-size: 15px;
+        color: #333;
+        font-family: manrope;
+      }
+      .second img {
+        height: 100%;
+        width: 220px;
+        border-radius: 10px;
+      }
+      .schedule_btn {
+        background-color: #0083ca;
+        background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+        transition: transform 0.1s;
+        color: white;
+        padding: 10px;
+        border-radius: 3px;
+        border: 0;
+        font-family: montserrat;
+      }
+      .schedule_btn:hover {
+        transform: scale(1.1);
+      }
+      .location_btn {
+        /* color: #0083ca; */
+        color: rgb(255, 94, 7);
+        background-color: white;
+        /* font-weight: 600; */
+        padding: 10px;
+        font-family: montserrat;
+        border-radius: 3px;
+        border: 0;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+      .mySlides {
+        height: 580px;
+        width: 100%;
+        cursor: pointer;
+      }
+      #main {
+        display: flex;
+      }
+      #map {
+        margin: 15px;
+        width: 50%;
+        position: sticky;
+      }
+      #map iframe {
+        width: 100%;
+        position: sticky;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="product_list.html">
+        <img
+          class="mySlides"
+          src="http://thejeansblog.com/wp-content/uploads/2014/06/diesel-mens-campaign-jeans.jpg"
+        />
+        <img
+          class="mySlides"
+          src="http://chasseurmagazine.com/wp-content/uploads/2013/11/Diesel-2013-Autumn-Winter-Collection-4.jpg"
+        />
+        <img
+          class="mySlides"
+          src="https://cdn.diesel.co.jp/pc/subhome/kid/20200319/KID_SS20_denim_1920x902.jpg"
+        />
+        <img
+          class="mySlides"
+          src="http://www.lejeanshomme.fr/wp-content/uploads/2013/01/diesel.jpg"
+        />
+        <img
+          class="mySlides"
+          src="http://thejeansblog.com/wp-content/uploads/2016/07/Diesel_Campaign_FW16_ATL_Denim_Group_DPS_highres.jpg"
+        />
+      </a>
+    </div>
+
+    <div id="heading">
+      <p>Store Locator</p>
+    </div>
+    <div id="main">
+      <div id="container">
+        <div id="address">
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>Diesel - Ambience Mall Gurgaon</h4>
+                <p>
+                  Space G - 001, NH-8, Ambience Island, DLF Phase 2, Sector 24,
+                  Gurugram, Delhi 122001
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/DIESEL+Store+-+Ambience+Mall+Vasant+Kunj/@28.5407791,77.1527096,17z/data=!3m1!5s0x390d1dce982775f1:0xd177578919cde739!4m14!1m7!3m6!1s0x390d1dceb8788859:0xefd69fc18ffbefc2!2sDIESEL+Store+-+Ambience+Mall+Vasant+Kunj!8m2!3d28.5407791!4d77.1548983!16s%2Fg%2F119wkb1pq!3m5!1s0x390d1dceb8788859:0xefd69fc18ffbefc2!8m2!3d28.5407791!4d77.1548983!16s%2Fg%2F119wkb1pq"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="https://tse2.mm.bing.net/th?id=OIP.x7VL2cf9irlci5CU_tB5yQHaE8&pid=Api&P=0"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>Diesel Jio World Drive</h4>
+                <p>
+                  DIESEL Store, Ground Floor, Jio World Drive, Maker Maxity,
+                  opposite MMRDA, Bandra Kurla Complex, Mumbai, Maharashtra
+                  400051.
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/DIESEL+store,+JWD/@19.05339,72.8482515,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c91ab30d5963:0x7f5eb16f8b9f134b!8m2!3d19.05339!4d72.8504402!16s%2Fg%2F11p5x8g55m"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="https://tse4.mm.bing.net/th?id=OIP.HrHuSvBF_RZOAA6b1t5RvgHaE8&pid=Api&P=0"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>DIESEL, Ambience Mall Vasant Kunj</h4>
+                <p>
+                  DIESEL, Ambience Mall Vasant Kunj Shop No.UG- 012,013,023,024,
+                  Nelson Mandela Marg, Vasant Kunj II, Vasant Kunj, New Delhi,
+                  Delhi 110070
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/DIESEL+Store+-+Ambience+Mall+Vasant+Kunj/@28.5407791,77.1527096,17z/data=!3m1!5s0x390d1dce982775f1:0xd177578919cde739!4m14!1m7!3m6!1s0x390d1dceb8788859:0xefd69fc18ffbefc2!2sDIESEL+Store+-+Ambience+Mall+Vasant+Kunj!8m2!3d28.5407791!4d77.1548983!16s%2Fg%2F119wkb1pq!3m5!1s0x390d1dceb8788859:0xefd69fc18ffbefc2!8m2!3d28.5407791!4d77.1548983!16s%2Fg%2F119wkb1pq"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="https://tse1.mm.bing.net/th?id=OIP.BGvVnxqnQU6dpy_F_8k6XgHaE7&pid=Api&P=0"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>DIESEL, Banjara Hills, Hyderabad</h4>
+                <p>
+                  DIESEL, Banjara Hills, Hyderabad Ground floor, 7, M. B.
+                  Towers, Road No. 2, Banjara Hills, Hyderabad, Telangana 500034
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/DIESEL+STORE+HYDERABAD/@17.424317,78.4309131,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb972ad09e058f:0xa6bf0e9b9cc86e46!8m2!3d17.424317!4d78.4309131!16s%2Fg%2F119wgk_5t?authuser=0&hl=en"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="http://media.fashionnetwork.com/m/d9bf/fc1a/327c/d198/b045/97ac/9b17/ea0a/f53d/27d8/27d8.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>DIESEL, Phoenix Market City Kurla</h4>
+                <p>
+                  DIESEL, Phoenix Market City Kurla, UG - 67, Lal Bahadur
+                  Shastri Rd, Kamani, Ashok Nagar, Kurla, Mumbai, Maharashtra
+                  400070
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/DIESEL/@19.085851,72.8884802,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c87d66587ee5:0x2f7930a5e559f28d!8m2!3d19.085851!4d72.8884802!16s%2Fg%2F124yn77_p?authuser=0&hl=en"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="https://sourcingjournal.com/wp-content/uploads/2020/08/Diesel-1.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>DIESEL, Phoenix Palladium Mumbai</h4>
+                <p>
+                  DIESEL, The Pheonix Palladium 642 Senapati Bapat Marg, Lower
+                  Parel c/o The Phoenix Mills Ltd, 642, G14-G15 Palladium
+                  Mumbai, 400013
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/DIESEL+Store+Palladium+Mumbai/@18.9939943,72.8219718,17z/data=!3m2!4b1!5s0x3be7ce8c7ac285bf:0xbbf7fd84645983e5!4m6!3m5!1s0x3be7ce86402d1bdb:0xe5695f4d55f15391!8m2!3d18.9939943!4d72.8241605!16s%2Fg%2F1hjh7tzbl?authuser=0&hl=en"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="https://tse2.mm.bing.net/th?id=OIP.hSUegDZyAIPzdWEgKxlb1wHaE8&pid=Api&P=0"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>DIESEL, Phoenix Market City Pune</h4>
+                <p>
+                  DIESEL, Phoenix Market City Pune, Shop NO-26A, c/o Phoenix
+                  Market City, 207, Viman Nagar Rd, Clover Park, Viman Nagar,
+                  Pune, Maharashtra 411014<br />421302
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/Diesel+Store+-+Pune/@18.5610757,73.9145316,17z/data=!3m2!4b1!5s0x3bc2c14116bb7089:0x95aa485f7c6c9e15!4m6!3m5!1s0x3bc2c15f7d76766b:0xc901e6c5ac5fab80!8m2!3d18.5610757!4d73.9167203!16s%2Fg%2F119w9gdj4?authuser=0&hl=en"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="https://tse4.mm.bing.net/th?id=OIP.dAqcdLvYhadXJgha7TgcGgHaEK&pid=Api&P=0"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="outerbox">
+            <div class="card">
+              <div class="first">
+                <h4>DIESEL, UB City Bangalore</h4>
+                <p>
+                  DIESEL, UB City SHOP NO. 1, CONCORDE TOWERS, G-1 UB CITY MALL,
+                  VITTAL MALLYA ROAD, BANGALORE - 560 001
+                </p>
+                <button class="schedule_btn">Schedule Now</button>
+                <a
+                  href="https://www.google.co.in/maps/place/DIESEL+STORE+BANGALORE/@12.9717548,77.5933774,17z/data=!3m2!4b1!5s0x3bae16775926e6c1:0x5ce03bb2d053ea65!4m6!3m5!1s0x3bae167743488201:0x39e9ffd71c6d68d0!8m2!3d12.9717548!4d77.5955661!16s%2Fg%2F11gfh7nvl0?authuser=0&hl=en"
+                >
+                  <button class="location_btn">
+                    <i class="fa-solid fa-location-dot"></i> VIEW ON MAP
+                  </button>
+                </a>
+              </div>
+              <div class="second">
+                <img
+                  src="https://tse2.mm.bing.net/th?id=OIP.sjMF4jMwQYiJN9R_Ot1i3QHaFj&pid=Api&P=0"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60361.33552309096!2d72.75412265820309!3d18.993994299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce86402d1bdb%3A0xe5695f4d55f15391!2sDIESEL%20Store%20Palladium%20Mumbai!5e0!3m2!1sen!2sin!4v1677251524261!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </body>
+
+  <!-- Do not touch this code !!!!!!!!!! -->
+  <script>
+    let Display_name = document.getElementById("LName");
+    let userDname = JSON.parse(localStorage.getItem("display-name"));
+    Display_name.textContent = userDname;
+  </script>
+  <!-- Do not touch this code !!!!!!!!!! -->
+
+  <script>
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {
+        slideIndex = 1;
+      }
+      x[slideIndex - 1].style.display = "block";
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+  </script>
+
+  <script>
+    let searchBar = document.getElementById("searchBar");
+    let searchBtn = document.getElementById("searchBtn");
+
+    searchBtn.addEventListener("click", () => {
+      if (searchBar.value == "mobile") {
+        window.location.href = "mobile.html";
+      } else if (searchBar.value == "furniture") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "Furniture") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "Furnitures") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "furnitures") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "sofa set") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "Sofa set") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "sofa sets") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "Sofa sets") {
+        window.location.href = "furniture.html";
+      } else if (searchBar.value == "Mobiles") {
+        window.location.href = "mobile.html";
+      } else if (searchBar.value == "mobiles") {
+        window.location.href = "mobile.html";
+      } else {
+        window.location.href = "none.html";
+      }
+    });
+  </script>
+</html>

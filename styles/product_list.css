@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #fff;
+    padding: 0em 2% 5em 2%;
+}
+
+#sieve {
+    font-family: 'Manrope', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 0em;
+    margin-bottom: 2em;
+    background-color: rgb(247, 247, 247);
+}
+
+#sieve #filters {
+    display: flex;
+}
+
+
+#sieve details {
+    position: relative;
+    border: 2px solid black;
+    background-color: #fff;
+}
+
+#sieve #filters details {
+    margin-right: 1em;
+    width: 250px;
+}
+
+#sieve #filters details:last-child {
+    margin-right: 0em;
+}
+
+#sieve details>summary {
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#sieve #filters details .option-container {
+    position: absolute;
+    transform: translateX(-0.9%);
+    width: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    column-gap: 1em;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#sieve #sort details {
+    width: 200px;
+}
+
+#sieve #sort details .option-container {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border: 2px solid black;
+    transform: translateX(-0.9%);
+}
+
+#sieve details .filter-option,
+#sieve details .sort-option {
+    position: relative;
+    padding: 0.5em 0em;
+}
+
+#sieve details .sort-option {
+    padding-left: 1em;
+}
+
+#sieve details .filter-option span,
+#sieve details .sort-option input {
+    margin-right: 0.1em;
+}
+
+#sieve details .filter-option input,
+#sieve details .sort-option input {
+    cursor: pointer;
+}
+
+#list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+    row-gap: 3em;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 945px) {
+    #list {
+        justify-content: center;
+    }
+}
+
+#list .product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+#list .product-card .product-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.5em 0em;
+    margin-left: 5px;
+}
+
+#list .product-card .product-color {
+    font-family: 'Manrope', sans-serif;
+    padding: 0.5em 0em;
+    color: rgb(46, 46, 46);
+    margin-left: 5px;
+}
+
+#list .product-card .product-name {
+    font-family: 'Manrope', sans-serif;
+    padding: 1em 0em;
+    color: rgb(46, 46, 46);
+    margin-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#list .product-card .quick-view {
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5em 0em;
+    background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#list .product-card img {
+    width: 100%;
+}
+
+#list .redirectable {
+    cursor: pointer;
+}
+
+#loading {
+    font-family: 'Manrope', sans-serif;
+    width: fit-content;
+    margin: auto;
+    margin-top: 3em;
+}
+
+#loading .lds-ring {
+    display: block;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+
+#modal-window {
+    backdrop-filter: blur(50px);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#modal-content {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5em 2em;
+    box-shadow: inset 0 0 5px rgba(218, 218, 218, 0.5);
+    position: relative;
+}
+
+#modal-content .product-sizes-modal {
+    display: flex;
+}
+
+#modal-content .image-list {
+    position: relative;
+    width: 600px;
+    display: flex;
+}
+
+#modal-content .image-container {
+    margin: auto;
+}
+
+#modal-content img {
+    width: 100%;
+}
+
+#loading-modal {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+
+#modal-content .previous-img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+#modal-content .next-img {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+#modal-content .previous-img,
+#modal-content .next-img {
+    align-items: center;
+    padding: 0.7em 0.3em;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+#modal-content .previous-img:hover,
+#modal-content .next-img:hover {
+    background-color: rgb(235, 235, 235);
+    transition-duration: 250ms;
+}
+
+#modal-content .previous-img span {
+    transform: translateX(24%);
+}
+
+#modal-content .next-img span {
+    transform: translateX(4%);
+}
+
+#modal-content .close-button {
+    font-size: 2rem;
+    height: fit-content;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    transition-duration: 250ms;
+}
+
+#modal-content .close-button:hover {
+    background-color: rgb(235, 235, 235);
+    transition-duration: 250ms;
+    padding: 0.5em;
+}
+
+#modal-content .static-info-modal {
+    font-family: 'Poppins', sans-serif;
+    margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10% 0em;
+}
+
+#modal-content .product-name-modal {
+    font-family: 'Montserrat', sans-serif;
+    padding: 0.5em 0em;
+    font-size: 2rem;
+}
+
+#modal-content .product-price-modal {
+    padding: 0.5em 0em;
+    font-size: 1.5rem;
+}
+
+#modal-content .product-color-modal {
+    font-size: 1.5rem;
+    padding: 0.5em 0em;
+}
+
+#modal-content .product-sizes-modal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-gap: 0.5em;
+    justify-content: center;
+}
+
+#modal-content .product-sizes-modal .product-size-div {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.2em 0em;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+#modal-content .description-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.5em 0em;
+    padding-bottom: 0.1em;
+}
+
+#modal-content .product-description-modal {
+    font-size: 1.5rem;
+    padding: 0.5em 0em;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: black transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#before-modal-loader {
+    backdrop-filter: blur(30px);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#before-modal-loader #loading {
+    margin: auto;
+}
+
+#go-to-top {
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    border: none;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.show-before-modal-loading {
+    display: flex;
+}
+
+.show-modal {
+    display: flex;
+}
+
+.show-go-to-top-button {
+    display: flex;
+}
+
+.fade {
+    opacity: 0;
+}
+
+.opaqued {
+    opacity: 0.1;
+    transition-duration: 250ms;
+}
+
+.cleared {
+    opacity: 1;
+}

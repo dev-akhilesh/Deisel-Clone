@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/admin.css">
+    <title>Admin Panel</title>
+</head>
+
+<body>
+    <section id="main">
+        <div class="tab">
+            <button id="products-tab" class="products">
+                <p>Product List</p>
+            </button>
+
+            <button id="users-tab" class="users">
+                <p>Users List</p>
+            </button>
+        </div>
+        <div class="tab-content">
+            <div id="products-info" class="products highlight-tab">
+                <a href="./manipulate_product.html" target="_blank" class="add-product">Add A New Product</a>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Brand</th>
+                            <th>Category</th>
+                            <th>Gender</th>
+                            <th>Price</th>
+                            <th>Stock Status</th>
+                            <th>Updated At</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="users-info" class="users hide"></div>
+        </div>
+    </section>
+</body>
+<script src="./scripts/admin.js" type="module"></script>
+
+</html>
