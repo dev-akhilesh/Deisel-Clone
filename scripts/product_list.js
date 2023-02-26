@@ -189,7 +189,7 @@ window.addEventListener("load", async () => {
         let products = await _fetch(PRODUCT_URL);
         products = await products.json();
 
-
+    //    console.log(products)
         displayFilters(products);
         displayProducts(products);
 
