@@ -6,16 +6,10 @@ Diesel.com is the official website of the company, and it offers an online shopp
 
 Overall, Diesel.com is a comprehensive and user-friendly website that offers a diverse range of fashion products and content for customers around the world.
 
-
-
 ## Authors
 
 - [@dev-akhilesh](https://github.com/dev-akhilesh)(Team Lead)
-
 - [@abhirupbakshi](https://github.com/abhirupbakshi)(Product List Page & Admin Page)
-
 - [@dev-akhilesh](https://github.com/dev-akhilesh)
-
 - [@dev-akhilesh](https://github.com/dev-akhilesh)
-
 - [@dev-akhilesh](https://github.com/dev-akhilesh)

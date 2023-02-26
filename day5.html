@@ -171,7 +171,6 @@
         .left-footer {
             display: flex;
             width: 50%;
-            /* background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%); */
             background-color: black;
         }
 
@@ -185,7 +184,7 @@
         }
 
         .left-footer h5 {
-            font-size: 21px;
+            font-size: 24px;
             font-weight: 700;
             color: #fff;
             padding-bottom: 14px;
@@ -212,7 +211,6 @@
             width: 89%;
             display: block;
             height: 25px;
-            padding: 1em 1em;
         }
 
         .gender {
@@ -240,7 +238,8 @@
             margin-right: 10px;
             display: flex;
             align-items: center;
-           
+            /* justify-content: space-between; */
+            /* border: 1px solid white; */
             width: 25%;
         }
 
@@ -337,7 +336,9 @@
             justify-content: space-around;
         }
 
-        
+        :root {
+            --fontFamily: "Scto_Grotesk_Regular";
+        }
 
         summary {
             list-style: none;
@@ -456,7 +457,7 @@
         .anotherWindow{
             display: none;
             position: absolute;
-            /* height: 200px; */
+            height: 200px;
         }
         .hideImages{
                 display: none;
@@ -465,35 +466,6 @@
                 height: 200px;
                 width: 200px ;
                 background-color: black;
-            }
-            .insideAnotherWindow{
-                width: 100%;
-                margin: auto;
-            }
-            .insideAnotherWindow div {
-                width: 100%;
-                margin-top: 10px;
-                /* border: 5px solid rgb(109, 33, 33); */
-
-            }
-            .insideAnotherWindow div img{
-                width: 100%;
-                /* border: 5px solid rgb(5, 59, 21); */
-            }
-            /* .insideAnotherWindow div button{ */
-                /* width: 100%;
-                height: 30px;
-                background-color: black; */
-                /* font-size:50px ; */
-                
-                /* color: black; */
-            /* } */
-            #closeButton{
-                position: fixed;
-                background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
-                height: 50px;
-                width: 100px;
-                right: 20px;
             }
         
 
@@ -608,8 +580,7 @@
         <nav></nav>
     </header>
     <div class="anotherWindow hideImages" id="anotherWindow">
-        <div id="insideAnotherWindow"  class="insideAnotherWindow">
-            <button id="closeButton">CLOSE</button>
+        <div id="insideAnotherWindow">
 
         </div>
     </div>
@@ -655,29 +626,29 @@
                         <h5>Sign up to never miss an update.</h5>
                         <div>
 
-                            
-                            <input type="email" placeholder="Enter Your Email address*" required id="inpEmail">
+
+                            <input type="email" placeholder="Enter Your Email address*">
 
                         </div>
                         <div class="gender">
                             <div class="male">
-                                <input type="radio" id="male" name="gender" value="male" required>
+                                <input type="radio" id="male" name="gender" value="male">
                                 <label for="male">Men</label>
                             </div>
                             <div class="female">
-                                <input type="radio" id="female" name="gender" value="female" required>
+                                <input type="radio" id="female" name="gender" value="female">
                                 <label for="female">Woman</label>
                             </div>
 
                         </div>
                         <div class="email">
-                            <p id="required"></p>
+                            <p></p>
                         </div>
                         <div class="text">
                             <p>By clicking Sign up you have read and agreed to our <a href="">privacy policy</a></p>
                         </div>
                         <div class="button">
-                            <button id="signUp">Sign Up</button>
+                            <button>Sign Up</button>
                         </div>
                     </div>
                 </div>
@@ -703,25 +674,12 @@
                 </div>
             </div>
         </div>
-    <footer>
-
-    </footer>
+    
 
 
 
 </body>
 <script>
-    // fetch("./footer.html")
-    // .then((res)=>{
-    //     return res.text()
-        
-       
-    // })
-    // .then((footer)=>
-    // {
-    //     // console.log(footer)
-    //     document.querySelector("footer").innerHTML=footer
-    // })
     // import{_fetch}from ""
     // lowerImage.innerText="hey"
     //     fetch('http://144.24.137.155:3000/products')
@@ -745,30 +703,17 @@
     let rightAppend = document.getElementById("right-text")
     let anotherWindow = document.getElementById("anotherWindow")
     let lowerImage = document.getElementById("moreImage")
-    let insideAnotherWindow=document.getElementById("insideAnotherWindow")
-    let signUp=document.getElementById("signUp")
-    let closeButton=document.getElementById("closeButton")
-    let inpEmail=document.getElementById("inpEmail")
-    let required=document.getElementById("required")
 
-    // console.log(window.location.href)
+    let insideAnotherWindow=document.getElementById("insideAnotherWindow")
+
+
+
+
+
+    console.log(window.location.href)
     DisplayImage(data[0].image.gallery)
     display(data)
     DisplayLowerImage(lowerImageData)
-    signUp.addEventListener("click",function()
-    {
-        if(inpEmail.value!="")
-        {
-            required.innerText=""
-
-            alert("Email Added To Our Newsletter Successfully")
-
-        }
-        else{
-            required.style.color="RED"
-            required.innerText="REQUIRED"
-        }
-    })
 
     function DisplayImage(data) {
         leftImage.innerHTML = ""
@@ -782,18 +727,22 @@
             img.addEventListener("click", function () {
                 imageData.forEach((el)=>
                 {
-                    
-                   
+                    let button=document.createElement("button")
+                    .addEventListener("click",function()
+                    {
+                        click.classList.add("hideImages")
+                    })
                     let imageDiv=document.createElement("div")
 
                     let insideImage=document.createElement("img")
                     insideImage.src=el;
-                    imageDiv.append(insideImage)
-                    insideAnotherWindow.append(imageDiv)
+                    div.append(insideImage,click)
+                    insideAnotherWindow.append(div)
 
                 })
-                    
-                    anotherWindow.style.display="block"
+            
+            
+            anotherWindow.style.display="block"
                 
             })
 
@@ -801,13 +750,6 @@
             leftImage.append(div)
 
         })
-       
-                    closeButton.addEventListener("click",function()
-                    {
-                      
-                        anotherWindow.style.display="none"
-                    })
-                    
 
     }
    
@@ -896,7 +838,8 @@
             ch.innerText = `CHOOSE SIZE :`
             sizeChart.append(ch, a)
             let x = null;
-            
+            // let buttonData=document.querySelector(".btn>.button:nth-child(1)")
+            // buttonData.style.backgroundColor="blue";
             btn.addEventListener("click", function (event) {
 
                 if (event.target.tagName != "BUTTON") {
@@ -929,16 +872,8 @@
             let expectedDelivery = document.createElement("p")
 
             checkDeliver.addEventListener("click", function () {
-                if(pinCode.value!="")
-                {
-                    expectedDelivery.innerText = "Expected delivery on Fri,3 Mar- Sun,4 Mar"
-                    expectedDelivery.style.color = "green"
-                }
-                else{
-                    expectedDelivery.innerText="PLEASE ENTER YOUR PINCODE"
-                    expectedDelivery.style.color = "red"
-                }
-                
+                expectedDelivery.innerText = "Expected delivery on Fri,3 Mar- Sun,4 Mar"
+                expectedDelivery.style.color = "green"
             })
             //<-----cart---->
             let addToCart = document.createElement("button")
@@ -1009,7 +944,7 @@
                 details.appendChild(summary)
 
             }
-            
+
             if (element.care_instructions) {
                 let details = document.createElement("details")
                 divSum.appendChild(details)
@@ -1034,7 +969,7 @@
                 summary.appendChild(i)
 
                 let x = element.care_instructions.split(". ")
-                // console.log(x)
+                console.log(x)
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
@@ -1072,7 +1007,7 @@
                 summary.appendChild(i)
 
                 let x = element.model_fit.split(". ")
-                // console.log(x)
+                console.log(x)
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
@@ -1109,7 +1044,7 @@
                 summary.appendChild(i)
 
                 let x = element.return_time_limit.split(". ")
-                // console.log(x)
+                console.log(x)
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
@@ -1148,7 +1083,7 @@
                 summary.appendChild(i)
 
                 let x = element.other_details.split(". ")
-                // console.log(x)
+                console.log(x)
                 x.forEach((el) => {
                     let pElmnt = document.createElement("li");
                     let txt2 = document.createTextNode(`${el}.`);
