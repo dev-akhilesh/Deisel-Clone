@@ -13,7 +13,9 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="./styles/product_list.css">
-    <title></title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Showing Products</title>
 </head>
 
 <body>
@@ -76,6 +78,7 @@
         </div>
     </section>
 
+
     <section id="products">
         <div id="list"></div>
         <div id="loading" class="hide">
@@ -88,6 +91,17 @@
             <p>You've seen <span></span> of <span></span> product(s).</p>
         </div>
     </section>
+
+    <div id="before-modal-loader" class="hide">
+        <!-- <div id="loading" class="hide">
+            <div class="lds-ring hide">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div> -->
+    </div>
 
     <div id="modal-window" class="hide">
         <div id="modal-content">
@@ -126,6 +140,12 @@
             <span class="material-symbols-outlined close-button">close</span>
         </div>
     </div>
+
+    <button id="go-to-top">
+        <span class="material-symbols-outlined">
+            arrow_upward
+        </span>
+    </button>
 </body>
 <script src="./scripts/product_list.js" type="module"></script>
 

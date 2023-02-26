@@ -1,7 +1,7 @@
 import { _fetch, debounce } from "../external/scripts/api.js";
 
 const PRODUCT_URL = "http://localhost:3000/products";
-const limitPerPage = 10;
+const limitPerPage = 12;
 let queryString = null;
 let products = null;
 let currentPage = null;
@@ -86,19 +86,19 @@ function getSieveQueryString() {
 /******************** Creating DOM Element for individual product ********************/
 function createProductElement(product) {
     return `
-        <div class="product-card redirectable">
-            <img src="${product.image}" alt="Image for product: ${product.name}" class="redirectable">
-            <div class="product-brif redirectable">
-                <p class="product-price redirectable">${"₹" + product.price}</p>
-                <p class="product-color redirectable">${product.color}</p>
-                <p class="product-name redirectable">${product.name}</p>
+        <div data-id="${product.id}" class="product-card redirectable">
+            <img data-id="${product.id}" src="${product.image}" alt="Image for product: ${product.name}" class="redirectable">
+            <div data-id="${product.id}" class="product-brif redirectable">
+                <p data-id="${product.id}" class="product-price redirectable">${"₹" + product.price}</p>
+                <p data-id="${product.id}" class="product-color redirectable">${product.color}</p>
+                <p data-id="${product.id}" class="product-name redirectable">${product.name}</p>
             </div>
             <button class="quick-view" 
                 data-gallery=${JSON.stringify(product.gallery.map(element => element.image))}
                 data-name="${product.name}"
                 data-price=${product.price}
                 data-color="${product.color}"
-                data-sizes="${JSON.stringify(product.size)}"
+                data-sizes=${JSON.stringify(product.size)}
                 data-description="${product.description}"
             >Quick View</button>
         </div>
@@ -205,6 +205,20 @@ async function setUpFromScratch(url) {
     document.querySelector("#loading span:nth-child(2)").innerText = totalProducts;
 }
 
+/***************************** Sets the visibility of the go to top button **************************/
+function goToTopButtonVisibility() {
+    if (window.pageYOffset == 0) {
+        // Hide the "Go to top" button
+        document.querySelector("#go-to-top").classList.add("hide");
+        document.querySelector("#go-to-top").classList.remove("show");
+    }
+    else {
+        // Show the "Go to top" button
+        document.querySelector("#go-to-top").classList.remove("hide");
+        document.querySelector("#go-to-top").classList.add("show");
+    }
+}
+
 /************************* After window load ********************************/
 window.addEventListener("load", async () => {
     try {
@@ -217,6 +231,9 @@ window.addEventListener("load", async () => {
         displayFilters(_products);
 
         await setUpFromScratch(`${PRODUCT_URL}?_limit=${limitPerPage}&_page=1&_sort=created_at&_order=desc${queryString == "" ? "" : `&${queryString}`}`);
+
+        // Toggling the visibility of go to top button
+        goToTopButtonVisibility();
 
         isLoaded = true;
     } catch (error) {
@@ -361,12 +378,20 @@ function modalImageButtonsVisibility(index, arrLength) {
 document.querySelector("#products #list").addEventListener("click", async (event) => {
     if (!event.target.classList.contains("quick-view")) return;
 
+    // Showing the animation element: loading before modal window is displayed
+    document.querySelector("#before-modal-loader").classList.remove("hide");
+    document.querySelector("#before-modal-loader").classList.add("show-before-modal-loading");
+
     let images = JSON.parse(event.target.getAttribute("data-gallery"))
     let index = 0;
 
     await createAndAppendImage(images[index]);
     addStaticModalInfo(event.target);
     modalImageButtonsVisibility(index, images.length);
+
+    // Hiding the animation element: loading after modal window is displayed
+    document.querySelector("#before-modal-loader").classList.add("hide");
+    document.querySelector("#before-modal-loader").classList.remove("show-before-modal-loading");
 
     // Showing the modal window
     document.querySelector("#modal-window").classList.remove("hide");
@@ -442,9 +467,22 @@ document.querySelector("#products #list").addEventListener("click", async (event
     })
 })
 
+/******************************* Adding event to "Go to top" button *******************************************/
+document.querySelector("#go-to-top").addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+})
+
+/**************************** Hiding the "Go to top button" at the top of the page *****************************/
+window.addEventListener("scroll", event => {
+    goToTopButtonVisibility();
+})
+
 /************************** Adding event listner to the products cards that will redirect to indevidual page ****************************/
 document.querySelector("#products #list").addEventListener("click", async (event) => {
     if (!event.target.classList.contains("redirectable")) return;
 
-
+    window.location.href = `./singleProductPage.html?id=${event.target.getAttribute("data-id")}`;
 })
