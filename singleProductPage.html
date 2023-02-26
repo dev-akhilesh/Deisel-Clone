@@ -1048,6 +1048,8 @@
                             lsData.push({ ...element, quantity: 1 })
                             localStorage.setItem("cart", JSON.stringify(lsData))
                             alert("Product Added To Cart")
+                            anchor.style.textDecoration="none"
+                            anchor.style.color="white"
                             anchor.href="cart_login_user.html"
                         }
                     }
