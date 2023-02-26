@@ -1,6 +1,6 @@
 import { _fetch, debounce } from "../external/scripts/api.js";
 
-const PRODUCT_URL = "http://localhost:3000/products";
+const PRODUCT_URL = "http://144.24.137.155:3000/products/";
 
 /******************* Low lighting all the tabs**************************/
 function lowlightAllTabs() {
