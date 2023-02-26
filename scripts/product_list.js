@@ -222,6 +222,14 @@ function goToTopButtonVisibility() {
 /************************* After window load ********************************/
 window.addEventListener("load", async () => {
     try {
+        // Getting the nav bar
+        let html = await Promise.all([fetch("../external/nav.html"), fetch("../external/footer.html")])
+        html[0] = await html[0].text();
+        html[1] = await html[1].text();
+
+        document.querySelector("nav").innerHTML = html[0];
+        document.querySelector("footer").innerHTML = html[1];
+
         let products = await _fetch(PRODUCT_URL);
         products = await products.json();
 
