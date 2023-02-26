@@ -1,4 +1,20 @@
-console.log("gna")
+// console.log("gna")
+
+window.addEventListener("load", async () => {
+    try {
+      // Getting the nav bar
+      let html = await Promise.all([
+        fetch("./external/nav.html"),
+        fetch("./exernal/footer.html"),
+      ]);
+      html[0] = await html[0].text();
+      html[1] = await html[1].text();
+      document.querySelector("nav").innerHTML = html[0];
+      document.querySelector("footer").innerHTML = html[1];
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
 let data=JSON.parse(localStorage.getItem("cart"));
 let totoalbill=document.querySelector("#total_bill")
