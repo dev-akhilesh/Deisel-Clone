@@ -9,7 +9,7 @@ Overall, Diesel.com is a comprehensive and user-friendly website that offers a d
 ## Authors
 
 - [@dev-akhilesh](https://github.com/dev-akhilesh)(Team Lead)
-- [@abhirupbakshi](https://github.com/abhirupbakshi)
+- [@abhirupbakshi](https://github.com/abhirupbakshi)(Product List Page & Admin Page)
 - [@dev-akhilesh](https://github.com/dev-akhilesh)
 - [@dev-akhilesh](https://github.com/dev-akhilesh)
 - [@dev-akhilesh](https://github.com/dev-akhilesh)
