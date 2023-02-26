@@ -23,6 +23,7 @@ body {
     display: flex;
 }
 
+
 #sieve details {
     position: relative;
     border: 2px solid black;

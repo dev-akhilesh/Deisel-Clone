@@ -1,7 +1,7 @@
 import { _fetch, debounce } from "../external/scripts/api.js";
 
 const PRODUCT_URL = "http://localhost:3000/products";
-let mainImg = null;
+let id = null;
 
 function addSingleValues(product) {
     document.querySelectorAll("#form form input:not(#gallery-main, #submit, .gallery-input, .size-input), #form form textarea").forEach(element => {
@@ -25,7 +25,8 @@ function createSizes(_sizes) {
 
 function getFormData() {
     let data = {}
-    document.querySelectorAll("#form form input:not(#gallery-main, #submit, .gallery-input, .size-input), #form form textarea").forEach(element => {
+    document.querySelectorAll("#form form input:not(#gallery-main, #submit, .gallery-input, .size-input), #form form textarea, #form form select").forEach(element => {
+
         data[element.getAttribute("id")] = element.value;
     })
 
@@ -58,7 +59,7 @@ window.addEventListener("load", async event => {
         document.querySelector("#form").innerHTML = form;
 
         // Getting the product ID if present in the query parameters
-        let id = new URLSearchParams(window.location.search).get("id");
+        id = new URLSearchParams(window.location.search).get("id");
         if (id) {
             // Getting the product
             let product = await _fetch(`${PRODUCT_URL}?id=${id}`);
@@ -130,9 +131,36 @@ document.querySelector("#form").addEventListener("click", function (event) {
 })
 
 // Adding submit event to form
-document.querySelector("#form").addEventListener("submit", event => {
+document.querySelector("#form").addEventListener("submit", async event => {
     event.preventDefault();
 
     let formData = getFormData()
-    console.log(formData);
+    try {
+        if (!id) {
+            // Use POST
+            let res = await _fetch(PRODUCT_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            res = await res.json();
+            console.log(res);
+        }
+        else {
+            // Use PUT
+            let res = await _fetch(`${PRODUCT_URL}/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            res = await res.json();
+            console.log(res);
+        }
+    } catch (error) {
+        console.error(error);
+    }
 })

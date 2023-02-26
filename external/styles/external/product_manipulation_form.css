@@ -1,0 +1,70 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    margin: auto;
+    font-family: 'Manrope', sans-serif;
+}
+
+form>* {
+    width: 100%;
+}
+
+form textarea {
+    height: 150px;
+    resize: none;
+    font-family: 'Manrope', sans-serif;
+}
+
+form label {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 0.2em 0em;
+    font-family: 'Poppins', sans-serif;
+}
+
+form input,
+form button,
+form select,
+form textarea {
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+form button,
+form select {
+    cursor: pointer;
+}
+
+form button {
+    background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+    border: none;
+}
+
+form select {
+    background-color: white;
+}
+
+form #size-list,
+form #gallery-list {
+    margin-bottom: 1em;
+}
+
+form #size-list .size-add,
+form #gallery-list .gallery-add {
+    margin-bottom: 1em;
+}
+
+form #gallery-list .gallery-add {
+    margin-top: 0.5em;
+}
+
+form #submit {
+    background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+    border: none;
+    cursor: pointer;
+    margin-top: 1em;
+}

@@ -51,16 +51,16 @@ document.querySelectorAll("#main .tab > button").forEach(element => {
 function createTableRow(product) {
     return `
         <tr>
-            <td>${product.id}</td>
-            <td>
+            <td class="id">${product.id}</td>
+            <td class="image">
                 <img src="${product.image}" alt="">
             </td>
-            <td>${product.brand_name}</td>
-            <td>${product.category}</td>
-            <td>${product.gender}</td>
-            <td>${product.price}</td>
-            <td>${product.stock_status}</td>
-            <td>${product.updated_at}</td>
+            <td class="brand_name">${product.brand_name}</td>
+            <td class="category">${product.category}</td>
+            <td class="gender">${product.gender}</td>
+            <td class="price">${product.price}</td>
+            <td class="stock_status">${product.stock_status}</td>
+            <td class="updated_at">${product.updated_at}</td>
             <td>
             <button class="view-product" data-id="${product.id}">View</button>
             </td>
@@ -80,8 +80,8 @@ function displayProducts(products) {
 
 window.addEventListener("load", async event => {
     // Fetching all the products
-    const products = await _fetch(PRODUCT_URL);
-    const productsData = await products.json();
+    let products = await _fetch(PRODUCT_URL);
+    let productsData = await products.json();
 
     displayProducts(productsData)
 })
@@ -101,8 +101,27 @@ document.querySelector("#products-info tbody").addEventListener("click", event =
 })
 
 // Adding delete product functionality
-document.querySelector("#products-info tbody").addEventListener("click", event => {
+document.querySelector("#products-info tbody").addEventListener("click", async event => {
     if (!event.target.classList.contains("delete-product")) return;
 
-    console.log(1);
+    try {
+        // Use DELETE
+        let res = await _fetch(`${PRODUCT_URL}/${event.target.dataset.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        res = await res.json();
+        console.log(res);
+
+
+        // Fetch all products
+        let products = await _fetch(PRODUCT_URL);
+        let productsData = await products.json();
+
+        displayProducts(productsData)
+    } catch (error) {
+        console.error(error);
+    }
 })
