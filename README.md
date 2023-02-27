@@ -38,13 +38,18 @@ Navigation: The website has a clear and intuitive navigation menu that allows us
 
 Product Catalog: The product catalog displays all the products available on the website, organized by category. Users can filter the products by price, brand, or other attributes to find the products they are looking for. Each product in the catalog includes an image, a title, a brief description, and the price.
 
+![image](images/catalog.png)
+
+Login Page:
+
+![image](images/login.png)
+
 Product Page: The product page provides detailed information about the product, including images, description, features, and reviews. Users can also select the quantity and add the product to their cart from this page.
 
 Shopping Cart: The shopping cart page shows the items that the user has added to the cart, the total price, and the option to proceed to checkout. Users can also update the quantity of items in the cart or remove items from the cart from this page.
 
 Checkout: The checkout page allows users to enter their shipping and billing information, select a shipping method, and make the payment. The website supports multiple payment methods, such as credit card and PayPal.
 
-Customer account: The website also includes a customer account functionality that allows users to view their order history, update their personal information, and see their wish list.
 
 Admin portal: The website's admin portal allows the website owner to manage the products, inventory, orders, and customers. It also provides analytics and reports on the website's performance and user activity.
 
