@@ -33,7 +33,8 @@ Overall, Diesel.com is a comprehensive and user-friendly website that offers a d
 
 
 Navigation: The website has a clear and intuitive navigation menu that allows users to easily find the products they are looking for. The menu includes links to the different product categories, as well as a link to the cart and the account page.
-<img src="images\nav.png" style=" width:60px ; height:60px "  >
+
+<img src="images\nav.png"  >
 
 Product Catalog: The product catalog displays all the products available on the website, organized by category. Users can filter the products by price, brand, or other attributes to find the products they are looking for. Each product in the catalog includes an image, a title, a brief description, and the price.
 
