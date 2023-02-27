@@ -46,6 +46,8 @@ Login Page:
 
 Product Page: The product page provides detailed information about the product, including images, description, features, and reviews. Users can also select the quantity and add the product to their cart from this page.
 
+![image](images/single_product.png)
+
 Shopping Cart: The shopping cart page shows the items that the user has added to the cart, the total price, and the option to proceed to checkout. Users can also update the quantity of items in the cart or remove items from the cart from this page.
 
 ![image](images/cart.png)
@@ -54,6 +56,8 @@ Checkout: The checkout page allows users to enter their shipping and billing inf
 
 
 Admin portal: The website's admin portal allows the website owner to manage the products, inventory, orders, and customers. It also provides analytics and reports on the website's performance and user activity.
+
+![image](images/admin.png)
 
 Security: The website uses encryption and secure connections to protect the user's personal and payment information. It also implements standard security measures to protect against data breaches and unauthorized access.
 
