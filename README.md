@@ -48,6 +48,8 @@ Product Page: The product page provides detailed information about the product, 
 
 Shopping Cart: The shopping cart page shows the items that the user has added to the cart, the total price, and the option to proceed to checkout. Users can also update the quantity of items in the cart or remove items from the cart from this page.
 
+![image](images/cart.png)
+
 Checkout: The checkout page allows users to enter their shipping and billing information, select a shipping method, and make the payment. The website supports multiple payment methods, such as credit card and PayPal.
 
 
